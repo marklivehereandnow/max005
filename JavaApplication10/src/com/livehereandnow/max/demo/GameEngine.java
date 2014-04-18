@@ -300,6 +300,10 @@ private Player[] 玩家= new Player[4];
         return cardRow;
     }
 
+    public boolean doSetCulture(int k){
+        玩家[當前玩家-1].get點數().set文化(k);
+        return true;
+    }
     /**
      * 1. take card
      *
@@ -381,6 +385,7 @@ private Player[] 玩家= new Player[4];
     public void doTODO() {
         System.out.println();
         System.out.println("  === TODO ===  ");
+        System.out.println("    1, 在指令行能用什麼樣的指令，把數字放到剛剛建好的內部類Score,設定文明指數set-culture 3");//
         System.out.println("    1, 在Player內設置I時代所有的科技牌位置");
         System.out.println("    2, 在Player內設置當前領袖位置.戰術牌位置.待建奇蹟位置.建好的奇蹟.值民地位置");
         System.out.println("    done, 目前第二個玩家有可能用兩個內政點數拿兩張時代A的領袖牌,應予以制止");
@@ -388,6 +393,9 @@ private Player[] 玩家= new Player[4];
 
     public void doVersion() {
 
+        System.out.println();
+        System.out.println("  === ver 0.14 ===  2014-4-18, 10:48, by MAX　");
+        System.out.println("    1. 已經可以在命令行設定文化指數");
         System.out.println();
         System.out.println("  === ver 0.13 ===  2014-4-18, 10:12, by MAX　");
         System.out.println("    1. 在class Player新增了一個內部類(Score),用於顯示玩家目前的分數");
@@ -472,19 +480,13 @@ private Player[] 玩家= new Player[4];
     }
 
     public boolean doCmd(String cmd) throws IOException {
-//        String cleanCmd = cmd.toLowerCase().trim();// 全部轉小寫
-
         String cleanCmd = cmd.trim();//           取消全部轉小寫
-
         String[] strTokens = cmd.split(" ");
         List<String> tokens = new ArrayList<>();
-//        System.out.println("sys >>>");
         for (String item : strTokens) {
             if (item.length() > 0) {
                 tokens.add(item);
-                //  System.out.println("   >>>" + token);
             }
-
         }
 
         switch (cleanCmd) {
@@ -492,6 +494,7 @@ private Player[] 玩家= new Player[4];
                 doHelp();
                 return true;
             }
+    
             case "hint": {
                 System.out.println("to show what user can do now");
                 return true;
@@ -534,6 +537,21 @@ private Player[] 玩家= new Player[4];
                         return true;
                     }
                     return doTakeCard(cardNum);
+                }
+                
+                
+                //在命令行設定文化指數
+                 if (tokens.get(0).equalsIgnoreCase("set-culture") || tokens.get(0).equalsIgnoreCase("culture")) {//簡易指令take
+                    if (tokens.size() != 2) { // set-culture X,X應該是正整數
+                        return false;
+                    }
+                    int cardNum = Integer.parseInt(tokens.get(1));//將第二個字符串轉為整數,第二個的序號為1
+                    if (cardNum > 998 || cardNum < 0) { // card number must be 0 to 12 only 
+//                        System.out.println("card number must be 0 to 12 only *** Nothing happened ***");
+                        System.out.println("設定的文化指數應該在0~998 *** 什麼事情都沒發生 ***");
+                        return true;
+                    }
+                    return doSetCulture(cardNum);
                 }
 
                 return false;
