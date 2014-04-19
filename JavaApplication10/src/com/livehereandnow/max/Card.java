@@ -11,7 +11,7 @@ package com.livehereandnow.max;
  */
 public class Card implements CardType {
 
-    public Card(int ID, String 卡名, int 時代, int 牌背, int 類型, int 顏色, String 右上, String 內容) {
+    public Card(int ID, String 卡名, int 時代, int 牌背, int 類型, int 顏色, String 右上, String 內容,String 建造成本) {
 
         this.右上 = 右上;
         this.內容 = 內容;
@@ -21,6 +21,7 @@ public class Card implements CardType {
         this.卡名 = 卡名;
         this.時代 = 時代;
         this.類型 = 類型;
+        this.建造成本=建造成本;
     }
 
     String 右上;
@@ -32,7 +33,7 @@ public class Card implements CardType {
     int 牌背;
     int 時代;
         String 卡名;
-
+        String 建造成本;
     int 類型;//0=領袖,1=奇蹟.2=黃牌
 
     public int get加權值() {
@@ -80,6 +81,8 @@ public class Card implements CardType {
     public int get時代() {
         return 時代;
     }
+    
+    
 
     public void set時代(int 時代) {
         this.時代 = 時代;
@@ -97,6 +100,11 @@ public class Card implements CardType {
     // ver 0.7, by Mark, 2014-4-16
     public String get卡名and類型Name() {
         return "[" + 卡名 + "-" + CardType.CARD_TYPE_NAME[類型] + "] ";
+    }
+//    待理解，時代為什麼可以這麼明確　2014-4-19 MAX
+        public String get時代名() {
+            String[] 時代名 = {"時代A", "時代I", "時代II", "時代III"};
+        return 時代名[時代];
     }
 
     public void set類型(int 類型) {

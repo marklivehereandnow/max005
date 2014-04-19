@@ -1,10 +1,10 @@
 /*
-遊戲按人數可分為2.3.4人
-按難度，可分為簡易.標準.完整
-先不考慮變型，有9種玩法
-我們先以2人完整遊戲開發這個程式
-紙盒打開後預計有4個時代的185內政牌，155張軍事牌
-2人完整遊戲，拿掉所有的條約牌，以及右上角顯示3+跟4+的牌
+ 遊戲按人數可分為2.3.4人
+ 按難度，可分為簡易.標準.完整
+ 先不考慮變型，有9種玩法
+ 我們先以2人完整遊戲開發這個程式
+ 紙盒打開後預計有4個時代的185內政牌，155張軍事牌
+ 2人完整遊戲，拿掉所有的條約牌，以及右上角顯示3+跟4+的牌
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -13,6 +13,7 @@ package com.livehereandnow.max.demo;
 
 import com.livehereandnow.max.Card;
 import com.livehereandnow.max.CardType;
+import com.livehereandnow.max.Cards;
 import com.livehereandnow.max.Player;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,10 +38,9 @@ public class GameEngine {
     private List<Card> player3Cards;
     private List<Card> player4Cards;
 
-    
 //    private　Player[] 玩家 = new Player[4];
 //        private　Player[] ccddd = new Player[4];
-private Player[] 玩家= new Player[4];
+    private Player[] 玩家 = new Player[4];
 
     public Player get玩家(int k) {
         return 玩家[k];
@@ -79,7 +79,6 @@ private Player[] 玩家= new Player[4];
 //    public Player getP4() {
 //        return p4;
 //    }
-
     final Card NOCARD = new Card(999, "", 0, CardType.EMPTY);
 //    int playerm
 //    2014-4-16 max 10:32,使用refactor變更變量名稱
@@ -92,9 +91,9 @@ private Player[] 玩家= new Player[4];
     }
 
     public void do拿牌扣點(int 點數) {
-        
+
 //        if (當前玩家 == 1) {
-            玩家[當前玩家-1].set內政點數(玩家[當前玩家-1].get內政點數() - 點數);
+        玩家[當前玩家 - 1].set內政點數(玩家[當前玩家 - 1].get內政點數() - 點數);
 //        }
 //        if (當前玩家 == 2) {
 //            玩家[1].set內政點數(玩家[1].get內政點數() - 點數);
@@ -110,7 +109,7 @@ private Player[] 玩家= new Player[4];
 
     public void set拿當前玩家拿過時代A領袖牌() {
 //        if (當前玩家 == 1) {
-            玩家[當前玩家-1].set拿過的時代A領袖牌數(1);
+        玩家[當前玩家 - 1].set拿過的時代A領袖牌數(1);
 //        }
 //        if (當前玩家 == 2) {
 //            p2.set拿過的時代A領袖牌數(1);
@@ -120,7 +119,7 @@ private Player[] 玩家= new Player[4];
 
     public int get當前玩家內政點數() {
 //        if (當前玩家 == 1) {
-            return 玩家[當前玩家-1].get內政點數();
+        return 玩家[當前玩家 - 1].get內政點數();
 //        }
 //        if (當前玩家 == 2) {
 //            return p2.get內政點數();
@@ -139,7 +138,7 @@ private Player[] 玩家= new Player[4];
 
     public int get當前玩家拿過的時代A領袖牌數() {
 //        if (當前玩家 == 1) {
-            return 玩家[當前玩家-1].get拿過的時代A領袖牌數();
+        return 玩家[當前玩家 - 1].get拿過的時代A領袖牌數();
 //        }
 //        if (當前玩家 == 2) {
 //            return p2.get拿過的時代A領袖牌數();
@@ -169,8 +168,8 @@ private Player[] 玩家= new Player[4];
         System.out.println();
         System.out.println("   === Round #" + roundNum + " ===");
         System.out.println("   Player 1 內政點數=" + 玩家[0].get內政點數() + getPlayerCardsString(player1Cards));
-        System.out.println("   Player 1 " +玩家[0].get點數());
-        
+        System.out.println("   Player 1 " + 玩家[0].get點數());
+
         System.out.println("   Player 2 內政點數=" + 玩家[1].get內政點數() + getPlayerCardsString(player2Cards));
         if (玩家人數 >= 3) {
             System.out.println("   Player 3 內政點數=" + 玩家[2].get內政點數() + getPlayerCardsString(player3Cards));
@@ -182,20 +181,25 @@ private Player[] 玩家= new Player[4];
 
     public void showCardRow() {
         System.out.println("   === Card Row ===");
+        //      設定一個String[]　設定初始值為 時代A,時代I,時代II,時代III 當匯入數值時就會改為顯示文字 
+//        String[] 時代名 = {"時代A", "時代I", "時代II", "時代III"};
 
         System.out.print("   Value 1: ");
         for (int k = 0; k < 5; k++) {
-            System.out.print(k + "[" + cardRow.get(k).get卡名() + "-" + cardRow.get(k).get類型Name() + "] ");
+            //         System.out.print(k + "[" + cardRow.get(k).get時代() + "-" + cardRow.get(k).get卡名() + "-" + cardRow.get(k).get類型Name() + "] ");
+//            System.out.print(k + "[" + 時代名[cardRow.get(k).get時代()] + "-" + cardRow.get(k).get卡名() + "-" + cardRow.get(k).get類型Name() + "] ");
+            System.out.print(k + "[" + cardRow.get(k).get時代名() + "-" + cardRow.get(k).get卡名() + "-" + cardRow.get(k).get類型Name() + "] ");
+
         }
         System.out.println();
         System.out.print("   Value 2: ");
         for (int k = 5; k < 9; k++) {
-            System.out.print(k + "[" + cardRow.get(k).get卡名() + "-" + cardRow.get(k).get類型Name() + "] ");
+            System.out.print(k + "[" + cardRow.get(k).get時代名() + "-" + cardRow.get(k).get卡名() + "-" + cardRow.get(k).get類型Name() + "] ");
         }
         System.out.println();
         System.out.print("   Value 3: ");
         for (int k = 9; k < 13; k++) {
-            System.out.print(k + "[" + cardRow.get(k).get卡名() + "-" + cardRow.get(k).get類型Name() + "] ");
+            System.out.print(k + "[" + cardRow.get(k).get時代名() + "-" + cardRow.get(k).get卡名() + "-" + cardRow.get(k).get類型Name() + "] ");
         }
         System.out.println();
 
@@ -229,16 +233,15 @@ private Player[] 玩家= new Player[4];
     }
 
     public GameEngine() {
-        玩家[0]=new Player();
-        玩家[1]=new Player();
-        玩家[2]=new Player();
-        玩家[3]=new Player();
-        
+        玩家[0] = new Player();
+        玩家[1] = new Player();
+        玩家[2] = new Player();
+        玩家[3] = new Player();
+
 //        p1 = 玩家[0];
 //        p2 = 玩家[1];
 //        p3 = 玩家[2];
 //        p4 = 玩家[3];
-
         當前玩家 = 1;
         roundNum = 1;
 //        p1.set內政點數(1);
@@ -250,8 +253,10 @@ private Player[] 玩家= new Player[4];
         玩家[1].set內政點數(2);
         玩家[2].set內政點數(3);
         玩家[3].set內政點數(4);
-        
-        ageA內政牌 = new ArrayList<>();
+
+        Cards cards = new Cards();
+//        ageA內政牌 = new ArrayList<>();
+        ageA內政牌 = cards.get所有的牌();
         cardRow = new ArrayList<>();
         player1Cards = new ArrayList<>();
         player2Cards = new ArrayList<>();
@@ -259,27 +264,26 @@ private Player[] 玩家= new Player[4];
         player4Cards = new ArrayList<>();
 
         // init Age A cards
-        ageA內政牌.add(new Card(0, "亞歷山大大帝", 0, CardType.領袖, 100));
-        ageA內政牌.add(new Card(1, "亞里士多得", 0, CardType.領袖, 950));
-        ageA內政牌.add(new Card(2, "凱薩", 0, CardType.領袖, 999));
-        ageA內政牌.add(new Card(3, "摩西", 0, CardType.領袖, 300));
-        ageA內政牌.add(new Card(4, "漢摩拉比", 0, CardType.領袖, 130));
-        ageA內政牌.add(new Card(5, "亞歷山大圖書館", 0, CardType.奇蹟, 250));
-        ageA內政牌.add(new Card(6, "巨人像", 0, CardType.奇蹟, 50));
-        ageA內政牌.add(new Card(7, "空中花園", 0, CardType.奇蹟, 500));
-        ageA內政牌.add(new Card(8, "金字塔", 0, CardType.奇蹟, 900));
-        ageA內政牌.add(new Card(15, "富饒之土", 0, CardType.黃牌, 200));
-        ageA內政牌.add(new Card(16, "工程天才", 0, CardType.黃牌, 850));
-        ageA內政牌.add(new Card(17, "藝術作品", 0, CardType.黃牌, 1));
-        ageA內政牌.add(new Card(18, "節儉", 0, CardType.黃牌, 150));
-        ageA內政牌.add(new Card(19, "荷馬", 0, CardType.領袖, 600));
-        ageA內政牌.add(new Card(20, "建築工地", 0, CardType.黃牌, 630));
-        ageA內政牌.add(new Card(21, "愛國主義", 0, CardType.黃牌, 529));
-        ageA內政牌.add(new Card(22, "革新思想", 0, CardType.黃牌, 774));
-        ageA內政牌.add(new Card(23, "建築工地", 0, CardType.黃牌, 630));
-        ageA內政牌.add(new Card(24, "愛國主義", 0, CardType.黃牌, 529));
-        ageA內政牌.add(new Card(25, "革新思想", 0, CardType.黃牌, 774));
-
+//        ageA內政牌.add(new Card(0, "亞歷山大大帝", 0, CardType.領袖, 100));
+//        ageA內政牌.add(new Card(1, "亞里士多得", 0, CardType.領袖, 950));
+//        ageA內政牌.add(new Card(2, "凱薩", 0, CardType.領袖, 999));
+//        ageA內政牌.add(new Card(3, "摩西", 0, CardType.領袖, 300));
+//        ageA內政牌.add(new Card(4, "漢摩拉比", 0, CardType.領袖, 130));
+//        ageA內政牌.add(new Card(5, "亞歷山大圖書館", 0, CardType.奇蹟, 250));
+//        ageA內政牌.add(new Card(6, "巨人像", 0, CardType.奇蹟, 50));
+//        ageA內政牌.add(new Card(7, "空中花園", 0, CardType.奇蹟, 500));
+//        ageA內政牌.add(new Card(8, "金字塔", 0, CardType.奇蹟, 900));
+//        ageA內政牌.add(new Card(15, "富饒之土", 0, CardType.黃牌, 200));
+//        ageA內政牌.add(new Card(16, "工程天才", 0, CardType.黃牌, 850));
+//        ageA內政牌.add(new Card(17, "藝術作品", 0, CardType.黃牌, 1));
+//        ageA內政牌.add(new Card(18, "節儉", 0, CardType.黃牌, 150));
+//        ageA內政牌.add(new Card(19, "荷馬", 0, CardType.領袖, 600));
+//        ageA內政牌.add(new Card(20, "建築工地", 0, CardType.黃牌, 630));
+//        ageA內政牌.add(new Card(21, "愛國主義", 0, CardType.黃牌, 529));
+//        ageA內政牌.add(new Card(22, "革新思想", 0, CardType.黃牌, 774));
+//        ageA內政牌.add(new Card(23, "建築工地", 0, CardType.黃牌, 630));
+//        ageA內政牌.add(new Card(24, "愛國主義", 0, CardType.黃牌, 529));
+//        ageA內政牌.add(new Card(25, "革新思想", 0, CardType.黃牌, 774));
         //
 //        System.out.println("system >>> init Age A 內政牌");
 //        System.out.println("system >>> " + ageA內政牌);
@@ -306,10 +310,11 @@ private Player[] 玩家= new Player[4];
         return cardRow;
     }
 
-    public boolean doSetCulture(int k){
-        玩家[當前玩家-1].get點數().set文化(k);
+    public boolean doSetCulture(int k) {
+        玩家[當前玩家 - 1].get點數().set文化(k);
         return true;
     }
+
     /**
      * 1. take card
      *
@@ -394,16 +399,21 @@ private Player[] 玩家= new Player[4];
         System.out.println("    1, 在change-turn的時候 目前玩家可以依照他目前的農業獲得食物");
         System.out.println("    1, 在Player內設置I時代所有的科技牌位置");
         System.out.println("    1, 在Player內設置I時代所有的科技牌位置");
-        
+
         System.out.println("    1, 在Player內設置I時代所有的科技牌位置");
         System.out.println("    2, 在Player內設置當前領袖位置.戰術牌位置.待建奇蹟位置.建好的奇蹟.值民地位置");
         System.out.println("    done, 目前第二個玩家有可能用兩個內政點數拿兩張時代A的領袖牌,應予以制止");
-    System.out.println("    done, 在指令行能用什麼樣的指令，把數字放到剛剛建好的內部類Score,設定文明指數set-culture 3");//
-        
+        System.out.println("    done, 在指令行能用什麼樣的指令，把數字放到剛剛建好的內部類Score,設定文明指數set-culture 3");//
+
     }
 
     public void doVersion() {
 
+        System.out.println();
+        System.out.println("  === ver 0.16 ===  2014-4-19, 10:34, by MAX　");
+        System.out.println("    1. 在時代A內政牌暫時匯入所有的卡牌");
+        System.out.println("    2. 在status裡面標示出卡牌的時代0.1.2.3");
+        System.out.println("    2. 在status裡面標示出卡牌的時代名,時代A,時代I,時代II,時代III");
         System.out.println();
         System.out.println("  === ver 0.15 ===  2014-4-19, 9:14, by MAX　");
         System.out.println("    1. 新增class Cards 用於放所有的卡牌");
@@ -420,11 +430,11 @@ private Player[] 玩家= new Player[4];
         System.out.println("  === ver 0.11 ===  2014-4-17, 11:34, by MAX　");
         System.out.println("    1. 建立科技陣列框架(特殊科技除外)，並在TestPlayer測試執行可用");
         System.out.println();
-        
+
         System.out.println("  === ver 0.10 ===  2014-4-17, 11:08, by MAX　");
         System.out.println("    1. 建立資源陣列框架，並在TestPlayer測試執行可用");
         System.out.println();
-        
+
         System.out.println("  === ver 0.9 ===  2014-4-16, 19:31, by MAX　");
         System.out.println("    1. 修復3個玩家和4個玩家時的拿牌扣點");
         System.out.println("    2. 新增簡易指令take");
@@ -508,7 +518,7 @@ private Player[] 玩家= new Player[4];
                 doHelp();
                 return true;
             }
-    
+
             case "hint": {
                 System.out.println("to show what user can do now");
                 return true;
@@ -552,10 +562,9 @@ private Player[] 玩家= new Player[4];
                     }
                     return doTakeCard(cardNum);
                 }
-                
-                
+
                 //在命令行設定文化指數
-                 if (tokens.get(0).equalsIgnoreCase("set-culture") || tokens.get(0).equalsIgnoreCase("culture")) {//簡易指令take
+                if (tokens.get(0).equalsIgnoreCase("set-culture") || tokens.get(0).equalsIgnoreCase("culture")) {//簡易指令take
                     if (tokens.size() != 2) { // set-culture X,X應該是正整數
                         return false;
                     }

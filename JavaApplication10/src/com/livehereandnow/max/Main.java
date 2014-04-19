@@ -18,19 +18,19 @@ public class Main implements CardType {
     //public Card(int 編號, String 卡名, int 時代, int 類型
     // Card[] showcards=new Card[13];
 
-    Card card0 = new Card();
-
-    Card card1 = new Card();
-    Card card2 = new Card();
-    Card card3 = new Card(3, "亞里士多得", 0, CardType.領袖);
-    Card card18 = new Card(18, "建築工地", 0, CardType.黃牌);
-    Card card21 = new Card(21, "摩西", 0, CardType.領袖);
-    Card card27 = new Card(27, "空中花園", 0, CardType.奇蹟);
-    Card card28 = new Card(28, "藝術作品", 0, CardType.黃牌);
-
-    Card show0 = card3;
-    Card show1 = card27;
-    Card show2 = card28;
+//    Card card0 = new Card();
+//
+//    Card card1 = new Card();
+//    Card card2 = new Card();
+//    Card card3 = new Card(3, "亞里士多得", 0, CardType.領袖);
+//    Card card18 = new Card(18, "建築工地", 0, CardType.黃牌);
+//    Card card21 = new Card(21, "摩西", 0, CardType.領袖);
+//    Card card27 = new Card(27, "空中花園", 0, CardType.奇蹟);
+//    Card card28 = new Card(28, "藝術作品", 0, CardType.黃牌);
+//
+//    Card show0 = card3;
+//    Card show1 = card27;
+//    Card show2 = card28;
 //     class CardTest {
 //   private int abc=0; 
 //           
@@ -135,62 +135,62 @@ public class Main implements CardType {
 //        時代A內政牌.add(new Card(24, " 建築工地 ", 0, CardType.黃牌));
 //        時代A內政牌.add(new Card(25, " 富饒之土 ", 0, CardType.黃牌));
 
-        時代A內政牌.add(new Card(0, "	亞歷山大大帝	", 0, CardType.領袖, 100));
-        時代A內政牌.add(new Card(1, "	亞里士多得	", 0, CardType.領袖, 950));
-        時代A內政牌.add(new Card(2, "	凱薩	", 0, CardType.領袖, 999));
-        時代A內政牌.add(new Card(3, "	摩西	", 0, CardType.領袖, 300));
-        時代A內政牌.add(new Card(4, "	漢摩拉比	", 0, CardType.領袖, 130));
-        時代A內政牌.add(new Card(5, "	亞歷山大圖書館	", 0, CardType.奇蹟, 250));
-        時代A內政牌.add(new Card(6, "	巨人像	", 0, CardType.奇蹟, 50));
-        時代A內政牌.add(new Card(7, "	空中花園	", 0, CardType.奇蹟, 500));
-        時代A內政牌.add(new Card(8, "	金字塔	", 0, CardType.奇蹟, 900));
-        時代A內政牌.add(new Card(15, "	富饒之土	", 0, CardType.黃牌, 200));
-        時代A內政牌.add(new Card(16, "	工程天才	", 0, CardType.黃牌, 850));
-        時代A內政牌.add(new Card(17, "	藝術作品	", 0, CardType.黃牌, 1));
-        時代A內政牌.add(new Card(18, "	節儉	", 0, CardType.黃牌, 150));
-        時代A內政牌.add(new Card(19, "	荷馬	", 0, CardType.黃牌, 600));
-        時代A內政牌.add(new Card(20, "	建築工地	", 0, CardType.黃牌, 630));
-        時代A內政牌.add(new Card(21, "	愛國主義	", 0, CardType.黃牌, 529));
-        時代A內政牌.add(new Card(22, "	革新思想	", 0, CardType.黃牌, 774));
-        時代A內政牌.add(new Card(23, "	建築工地	", 0, CardType.黃牌, 630));
-        時代A內政牌.add(new Card(24, "	愛國主義	", 0, CardType.黃牌, 529));
-        時代A內政牌.add(new Card(25, "	革新思想	", 0, CardType.黃牌, 774));
-
-        時代I內政牌.add(new Card(0, "	哥倫布	", 1, CardType.領袖));
-        時代I內政牌.add(new Card(1, "	聖女貞德	", 1, CardType.領袖));
-        時代I內政牌.add(new Card(2, "	巴巴羅薩	", 1, CardType.領袖));
-        時代I內政牌.add(new Card(3, "	成吉思汗	", 1, CardType.領袖));
-        時代I內政牌.add(new Card(4, "	米開朗基羅	", 1, CardType.領袖));
-        時代I內政牌.add(new Card(5, "	達文西	", 1, CardType.領袖));
-        時代I內政牌.add(new Card(6, "	萬里長城	", 1, CardType.奇蹟));
-        時代I內政牌.add(new Card(7, "	卡羅琳娜大學	", 1, CardType.奇蹟));
-        時代I內政牌.add(new Card(8, "	聖彼得大教堂	", 1, CardType.奇蹟));
-        時代I內政牌.add(new Card(9, "	泰姬陵	", 1, CardType.奇蹟));
-        時代I內政牌.add(new Card(10, "	戰爭機構	", 1, CardType.科技));
-        時代I內政牌.add(new Card(11, "	製圖術	", 1, CardType.科技));
-        時代I內政牌.add(new Card(12, "	劍士	", 1, CardType.科技));
-        時代I內政牌.add(new Card(13, "	印刷術	", 1, CardType.科技));
-        時代I內政牌.add(new Card(14, "	君主制	", 1, CardType.科技));
-        時代I內政牌.add(new Card(15, "	河蟹娛樂	", 1, CardType.科技));
-        時代I內政牌.add(new Card(16, "	戲劇	", 1, CardType.科技));
-        時代I內政牌.add(new Card(17, "	法典	", 1, CardType.科技));
-        時代I內政牌.add(new Card(18, "	灌溉	", 1, CardType.科技));
-        時代I內政牌.add(new Card(19, "	煉金術	", 1, CardType.科技));
-        時代I內政牌.add(new Card(20, "	石工學	", 1, CardType.科技));
-        時代I內政牌.add(new Card(21, "	神學	", 1, CardType.科技));
-        時代I內政牌.add(new Card(22, "	神權政治	", 1, CardType.科技));
-        時代I內政牌.add(new Card(23, "	鐵礦	", 1, CardType.科技));
-        時代I內政牌.add(new Card(24, "	騎士	", 1, CardType.科技));
-        時代I內政牌.add(new Card(25, "	豐收	", 1, CardType.黃牌));
-        時代I內政牌.add(new Card(26, "	富饒之土	", 1, CardType.黃牌));
-        時代I內政牌.add(new Card(27, "	工程天才	", 1, CardType.黃牌));
-        時代I內政牌.add(new Card(28, "	建築工地	", 1, CardType.黃牌));
-        時代I內政牌.add(new Card(29, "	愛國主義	", 1, CardType.黃牌));
-        時代I內政牌.add(new Card(30, "	突破	", 1, CardType.黃牌));
-        時代I內政牌.add(new Card(31, "	藝術作品	", 1, CardType.黃牌));
-        時代I內政牌.add(new Card(32, "	節儉	", 1, CardType.黃牌));
-        時代I內政牌.add(new Card(33, "	革新思想	", 1, CardType.黃牌));
-        時代I內政牌.add(new Card(34, "	高效升級	", 1, CardType.黃牌));
+//        時代A內政牌.add(new Card(0, "	亞歷山大大帝	", 0, CardType.領袖, 100));
+//        時代A內政牌.add(new Card(1, "	亞里士多得	", 0, CardType.領袖, 950));
+//        時代A內政牌.add(new Card(2, "	凱薩	", 0, CardType.領袖, 999));
+//        時代A內政牌.add(new Card(3, "	摩西	", 0, CardType.領袖, 300));
+//        時代A內政牌.add(new Card(4, "	漢摩拉比	", 0, CardType.領袖, 130));
+//        時代A內政牌.add(new Card(5, "	亞歷山大圖書館	", 0, CardType.奇蹟, 250));
+//        時代A內政牌.add(new Card(6, "	巨人像	", 0, CardType.奇蹟, 50));
+//        時代A內政牌.add(new Card(7, "	空中花園	", 0, CardType.奇蹟, 500));
+//        時代A內政牌.add(new Card(8, "	金字塔	", 0, CardType.奇蹟, 900));
+//        時代A內政牌.add(new Card(15, "	富饒之土	", 0, CardType.黃牌, 200));
+//        時代A內政牌.add(new Card(16, "	工程天才	", 0, CardType.黃牌, 850));
+//        時代A內政牌.add(new Card(17, "	藝術作品	", 0, CardType.黃牌, 1));
+//        時代A內政牌.add(new Card(18, "	節儉	", 0, CardType.黃牌, 150));
+//        時代A內政牌.add(new Card(19, "	荷馬	", 0, CardType.黃牌, 600));
+//        時代A內政牌.add(new Card(20, "	建築工地	", 0, CardType.黃牌, 630));
+//        時代A內政牌.add(new Card(21, "	愛國主義	", 0, CardType.黃牌, 529));
+//        時代A內政牌.add(new Card(22, "	革新思想	", 0, CardType.黃牌, 774));
+//        時代A內政牌.add(new Card(23, "	建築工地	", 0, CardType.黃牌, 630));
+//        時代A內政牌.add(new Card(24, "	愛國主義	", 0, CardType.黃牌, 529));
+//        時代A內政牌.add(new Card(25, "	革新思想	", 0, CardType.黃牌, 774));
+//
+//        時代I內政牌.add(new Card(0, "	哥倫布	", 1, CardType.領袖));
+//        時代I內政牌.add(new Card(1, "	聖女貞德	", 1, CardType.領袖));
+//        時代I內政牌.add(new Card(2, "	巴巴羅薩	", 1, CardType.領袖));
+//        時代I內政牌.add(new Card(3, "	成吉思汗	", 1, CardType.領袖));
+//        時代I內政牌.add(new Card(4, "	米開朗基羅	", 1, CardType.領袖));
+//        時代I內政牌.add(new Card(5, "	達文西	", 1, CardType.領袖));
+//        時代I內政牌.add(new Card(6, "	萬里長城	", 1, CardType.奇蹟));
+//        時代I內政牌.add(new Card(7, "	卡羅琳娜大學	", 1, CardType.奇蹟));
+//        時代I內政牌.add(new Card(8, "	聖彼得大教堂	", 1, CardType.奇蹟));
+//        時代I內政牌.add(new Card(9, "	泰姬陵	", 1, CardType.奇蹟));
+//        時代I內政牌.add(new Card(10, "	戰爭機構	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(11, "	製圖術	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(12, "	劍士	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(13, "	印刷術	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(14, "	君主制	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(15, "	河蟹娛樂	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(16, "	戲劇	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(17, "	法典	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(18, "	灌溉	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(19, "	煉金術	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(20, "	石工學	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(21, "	神學	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(22, "	神權政治	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(23, "	鐵礦	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(24, "	騎士	", 1, CardType.科技));
+//        時代I內政牌.add(new Card(25, "	豐收	", 1, CardType.黃牌));
+//        時代I內政牌.add(new Card(26, "	富饒之土	", 1, CardType.黃牌));
+//        時代I內政牌.add(new Card(27, "	工程天才	", 1, CardType.黃牌));
+//        時代I內政牌.add(new Card(28, "	建築工地	", 1, CardType.黃牌));
+//        時代I內政牌.add(new Card(29, "	愛國主義	", 1, CardType.黃牌));
+//        時代I內政牌.add(new Card(30, "	突破	", 1, CardType.黃牌));
+//        時代I內政牌.add(new Card(31, "	藝術作品	", 1, CardType.黃牌));
+//        時代I內政牌.add(new Card(32, "	節儉	", 1, CardType.黃牌));
+//        時代I內政牌.add(new Card(33, "	革新思想	", 1, CardType.黃牌));
+//        時代I內政牌.add(new Card(34, "	高效升級	", 1, CardType.黃牌));
         /*
          for (int k = 0; k < 時代A內政牌.size(); k++) {
          System.out.println("   第" + k + "張 " + 時代A內政牌.get(k).卡名);
