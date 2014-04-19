@@ -11,6 +11,15 @@ package com.livehereandnow.max;
  */
 public interface CardType {
 
+    int 內政 =0;
+    int 軍事=1;
+    int 綠色=0;
+    int 紫色=1;
+    int 橙色=2;
+    int 灰色=3;
+    int 棕色=4;
+    int 紅色=5;
+    int 黃色=6;
     int 政府 = 0;
     int 奇蹟 = 1;
     int 領袖 = 2;

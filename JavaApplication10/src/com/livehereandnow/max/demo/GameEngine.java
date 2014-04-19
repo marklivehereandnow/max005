@@ -1,4 +1,10 @@
 /*
+遊戲按人數可分為2.3.4人
+按難度，可分為簡易.標準.完整
+先不考慮變型，有9種玩法
+我們先以2人完整遊戲開發這個程式
+紙盒打開後預計有4個時代的185內政牌，155張軍事牌
+2人完整遊戲，拿掉所有的條約牌，以及右上角顯示3+跟4+的牌
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -385,14 +391,22 @@ private Player[] 玩家= new Player[4];
     public void doTODO() {
         System.out.println();
         System.out.println("  === TODO ===  ");
-        System.out.println("    1, 在指令行能用什麼樣的指令，把數字放到剛剛建好的內部類Score,設定文明指數set-culture 3");//
+        System.out.println("    1, 在change-turn的時候 目前玩家可以依照他目前的農業獲得食物");
+        System.out.println("    1, 在Player內設置I時代所有的科技牌位置");
+        System.out.println("    1, 在Player內設置I時代所有的科技牌位置");
+        
         System.out.println("    1, 在Player內設置I時代所有的科技牌位置");
         System.out.println("    2, 在Player內設置當前領袖位置.戰術牌位置.待建奇蹟位置.建好的奇蹟.值民地位置");
         System.out.println("    done, 目前第二個玩家有可能用兩個內政點數拿兩張時代A的領袖牌,應予以制止");
+    System.out.println("    done, 在指令行能用什麼樣的指令，把數字放到剛剛建好的內部類Score,設定文明指數set-culture 3");//
+        
     }
 
     public void doVersion() {
 
+        System.out.println();
+        System.out.println("  === ver 0.15 ===  2014-4-19, 9:14, by MAX　");
+        System.out.println("    1. 新增class Cards 用於放所有的卡牌");
         System.out.println();
         System.out.println("  === ver 0.14 ===  2014-4-18, 10:48, by MAX　");
         System.out.println("    1. 已經可以在命令行設定文化指數");

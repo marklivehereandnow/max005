@@ -12,8 +12,10 @@ import java.util.List;
  *
  * @author max
  */
+
 public class Player {
 
+    
     public class Score{
         int 文化;
         int 科技;
@@ -122,6 +124,7 @@ public class Player {
 //    private int[] 農業=new int[4];//存放黃點數量
 //    private boolean[] 打出農業科技=new boolean[4];//記錄科技是否已經啟用
 ////    private boolean[] 打出農業科技=new boolean[4];//記錄科技是否已經啟用
+    
     Agriculture[] 農業 = new Agriculture[4];
     Agriculture[] 礦場 = new Agriculture[4];//礦業的需求與農業相同，
     Agriculture[] 神廟 = new Agriculture[4];
