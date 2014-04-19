@@ -181,28 +181,21 @@ public class GameEngine {
 
     public void showCardRow() {
         System.out.println("   === Card Row ===");
-        //      設定一個String[]　設定初始值為 時代A,時代I,時代II,時代III 當匯入數值時就會改為顯示文字 
-//        String[] 時代名 = {"時代A", "時代I", "時代II", "時代III"};
-
         System.out.print("   Value 1: ");
         for (int k = 0; k < 5; k++) {
-            //         System.out.print(k + "[" + cardRow.get(k).get時代() + "-" + cardRow.get(k).get卡名() + "-" + cardRow.get(k).get類型Name() + "] ");
-//            System.out.print(k + "[" + 時代名[cardRow.get(k).get時代()] + "-" + cardRow.get(k).get卡名() + "-" + cardRow.get(k).get類型Name() + "] ");
-            System.out.print(k + "[" + cardRow.get(k).get時代名() + "-" + cardRow.get(k).get卡名() + "-" + cardRow.get(k).get類型Name() + "] ");
-
+            System.out.print(k + cardRow.get(k).toString(1));
         }
         System.out.println();
         System.out.print("   Value 2: ");
         for (int k = 5; k < 9; k++) {
-            System.out.print(k + "[" + cardRow.get(k).get時代名() + "-" + cardRow.get(k).get卡名() + "-" + cardRow.get(k).get類型Name() + "] ");
+            System.out.print(k + cardRow.get(k).toString(1));
         }
         System.out.println();
         System.out.print("   Value 3: ");
         for (int k = 9; k < 13; k++) {
-            System.out.print(k + "[" + cardRow.get(k).get時代名() + "-" + cardRow.get(k).get卡名() + "-" + cardRow.get(k).get類型Name() + "] ");
+            System.out.print(k + cardRow.get(k).toString(1));
         }
         System.out.println();
-
     }
 
     public String getPlayerCardsString(List<Card> list) {
@@ -256,7 +249,8 @@ public class GameEngine {
 
         Cards cards = new Cards();
 //        ageA內政牌 = new ArrayList<>();
-        ageA內政牌 = cards.get所有的牌();
+        ageA內政牌 = cards.get時代A內政牌();
+
         cardRow = new ArrayList<>();
         player1Cards = new ArrayList<>();
         player2Cards = new ArrayList<>();
@@ -410,6 +404,10 @@ public class GameEngine {
     public void doVersion() {
 
         System.out.println();
+                System.out.println("  === ver 0.17 ===  2014-4-19, 11:23, by MAX　");
+        System.out.println("    1. 在時代A內政牌內匯入正確的牌，包括基礎暴力法和進階的篩選過濾法");
+        System.out.println("    2. showcardRow的結構大更新，改由從card給String");
+        System.out.println("    3. 單張牌顯示方式,[時代A內政-革新思想-行動]");
         System.out.println("  === ver 0.16 ===  2014-4-19, 10:34, by MAX　");
         System.out.println("    1. 在時代A內政牌暫時匯入所有的卡牌");
         System.out.println("    2. 在status裡面標示出卡牌的時代0.1.2.3");

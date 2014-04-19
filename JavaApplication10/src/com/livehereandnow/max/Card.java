@@ -106,6 +106,10 @@ public class Card implements CardType {
             String[] 時代名 = {"時代A", "時代I", "時代II", "時代III"};
         return 時代名[時代];
     }
+        public String get牌背名() {
+            String[] 牌背名 = {"內政", "軍事"};
+        return 牌背名[牌背];
+    }
 
     public void set類型(int 類型) {
         this.類型 = 類型;
@@ -118,5 +122,11 @@ public class Card implements CardType {
     public String toString() {
         return 卡名 + "(" + 加權值 + ")";
     }
+
+        public String toString(int k) {
+        return "[" + get時代名()+get牌背名() + "-" +get卡名() + "-" + get類型Name() + "] ";
+    }
+
+//        System.out.print(k + "[" + cardRow.get(k).get時代名()+cardRow.get(k).get牌背名() + "-" + cardRow.get(k).get卡名() + "-" + cardRow.get(k).get類型Name() + "] ");
 
 }
