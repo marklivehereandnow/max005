@@ -390,12 +390,9 @@ public class GameEngine {
     public void doTODO() {
         System.out.println();
         System.out.println("  === TODO ===  ");
-        System.out.println("    1, 在change-turn的時候 目前玩家可以依照他目前的農業獲得食物");
-        System.out.println("    1, 在Player內設置I時代所有的科技牌位置");
-        System.out.println("    1, 在Player內設置I時代所有的科技牌位置");
-
-        System.out.println("    1, 在Player內設置I時代所有的科技牌位置");
-        System.out.println("    2, 在Player內設置當前領袖位置.戰術牌位置.待建奇蹟位置.建好的奇蹟.值民地位置");
+        System.out.println("    1, 在change-turn的時候 目前玩家可以依照他目前的私有板塊獲得對應的資源，預計花1個小時完成,4/20日完成");
+        System.out.println("    2, 在Player內設置當前領袖位置.戰術牌位置.待建奇蹟位置.建好的奇蹟.值民地位置,預計花0.5個小時完成,4/20日完成");
+        System.out.println("    done, 在Player內設置I時代所有的科技牌位置");
         System.out.println("    done, 目前第二個玩家有可能用兩個內政點數拿兩張時代A的領袖牌,應予以制止");
         System.out.println("    done, 在指令行能用什麼樣的指令，把數字放到剛剛建好的內部類Score,設定文明指數set-culture 3");//
 
@@ -404,7 +401,9 @@ public class GameEngine {
     public void doVersion() {
 
         System.out.println();
-                System.out.println("  === ver 0.17 ===  2014-4-19, 11:23, by MAX　");
+        System.out.println("  === ver 0.17.1 ===  2014-4-19, 11:34, by MAX　");
+        System.out.println("    1. 變更TODO,預計明日要完成事項");
+        System.out.println("  === ver 0.17 ===  2014-4-19, 11:23, by MAX　");
         System.out.println("    1. 在時代A內政牌內匯入正確的牌，包括基礎暴力法和進階的篩選過濾法");
         System.out.println("    2. showcardRow的結構大更新，改由從card給String");
         System.out.println("    3. 單張牌顯示方式,[時代A內政-革新思想-行動]");
