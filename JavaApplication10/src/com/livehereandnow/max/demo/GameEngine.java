@@ -33,11 +33,12 @@ public class GameEngine {
     int[] CARD_POINT = {1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3};
     private List<Card> ageA內政牌;
     private List<Card> cardRow;
+//  待優化  
     private List<Card> player1Cards;
     private List<Card> player2Cards;
     private List<Card> player3Cards;
     private List<Card> player4Cards;
-
+//  待優化
     private Player[] 玩家 = new Player[4];
 
     public Player get玩家(int k) {
@@ -154,16 +155,17 @@ public class GameEngine {
         玩家[當前玩家].執行生產();
 
         System.out.println("運行XXX後");
-                System.out.print("農業I    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/"+玩家[當前玩家].get農業(0).get藍點()+"(藍點)    ");
-        System.out.print("礦山I    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/"+玩家[當前玩家].get農業(0).get藍點()+"(藍點)    ");
-        System.out.print("實驗室I    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/   ");
-        System.out.print("神廟I    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/ ");
-   System.out.println("步兵I    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/    ");
-        System.out.print("農業A    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/"+玩家[當前玩家].get農業(0).get藍點()+"(藍點)    ");
-        System.out.print("礦山A    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/"+玩家[當前玩家].get農業(0).get藍點()+"(藍點)    ");
-        System.out.print("實驗室A    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/   ");
-        System.out.print("神廟A    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/ ");
-   System.out.println("步兵A    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/    ");
+玩家[當前玩家].展示現況();
+//        System.out.print("農業I " + 玩家[當前玩家].get農場(0).get黃點() + "(黃點)/" + 玩家[當前玩家].get農場(0).get藍點() + "(藍點)    ");
+//        System.out.print("礦山I  " + 玩家[當前玩家].get農場(0).get黃點() + "(黃點)/" + 玩家[當前玩家].get農場(0).get藍點() + "(藍點)    ");
+//        System.out.print("實驗室I  " + 玩家[當前玩家].get農場(0).get黃點() + "(黃點)/   ");
+//        System.out.print("神廟I  " + 玩家[當前玩家].get農場(0).get黃點() + "(黃點)/ ");
+//        System.out.println("步兵I  " + 玩家[當前玩家].get農場(0).get黃點() + "(黃點)/    ");
+//        System.out.print("農業A  " + 玩家[當前玩家].get農場(0).get黃點() + "(黃點)/" + 玩家[當前玩家].get農場(0).get藍點() + "(藍點)    ");
+//        System.out.print("礦山A  " + 玩家[當前玩家].get農場(0).get黃點() + "(黃點)/" + 玩家[當前玩家].get農場(0).get藍點() + "(藍點)    ");
+//        System.out.print("實驗室A  " + 玩家[當前玩家].get農場(0).get黃點() + "(黃點)/   ");
+//        System.out.print("神廟A  " + 玩家[當前玩家].get農場(0).get黃點() + "(黃點)/ ");
+//        System.out.println("步兵A  " + 玩家[當前玩家].get農場(0).get黃點() + "(黃點)/    ");
         //    System.out.println("當前玩家農業A上面的藍點為" + 玩家[當前玩家].get農業(0).get藍點());
         if (當前玩家 == 玩家人數) {
             當前玩家 = 1;
@@ -323,6 +325,9 @@ public class GameEngine {
 
         System.out.println();
 
+        System.out.println("  === ver 0.20 ===  2014-4-22, 01:55, by MAX　");
+        System.out.println("    1. 展示區改由Player提供方法");
+        System.out.println("    2. 重新定義農業、礦業、戰士改為農場、礦山、步兵");
         System.out.println("  === ver 0.19.1 ===  2014-4-21, 11:50, by MAX　");
         System.out.println("    1. 建立展示點數雛型");
         System.out.println("  === ver 0.19 ===  2014-4-21, 11:33, by MAX　");

@@ -16,28 +16,49 @@ import java.util.List;
  */
 public class Player {
 
-//    //生產
-//Agriculture[] 農業 = new Agriculture[4];
-//    Agriculture[] 礦場 = new Agriculture[4];//礦業的需求與農業相同，
-//    public class Procreati{
-//        for(int k=0;k<4;k++){
-//        
-//    }
-//           }
-//
-//    
-//    
-//    
-//    
-//    
-//    
     public class Score {
 
-        int 文化;
-        int 科技;
+        public int get文化生產() {
+            return 文化生產;
+        }
+
+        public void set文化生產(int 文化生產) {
+            this.文化生產 = 文化生產;
+        }
+
+        public int get科技生產() {
+            return 科技生產;
+        }
+
+        public void set科技生產(int 科技生產) {
+            this.科技生產 = 科技生產;
+        }
+
+        public int get笑臉() {
+            return 笑臉;
+        }
+
+        public void set笑臉(int 笑臉) {
+            this.笑臉 = 笑臉;
+        }
+
+        public int get軍力() {
+            return 軍力;
+        }
+
+        public void set軍力(int 軍力) {
+            this.軍力 = 軍力;
+        }
+
         int 食物;
         int 資源;
-
+        int 文化;
+        int 文化生產;
+        int 科技;
+        int 科技生產;
+        int 笑臉;
+        int 軍力;
+        
         @Override
         public String toString() {
             return "Score{" + "\u6587\u5316=" + 文化 + ", \u79d1\u6280=" + 科技 + ", \u98df\u7269=" + 食物 + ", \u8cc7\u6e90=" + 資源 + '}';
@@ -155,20 +176,20 @@ public class Player {
     private Agriculture[] 劇院 = new Agriculture[4];
     private Agriculture[] 圖書館 = new Agriculture[4];
 
-    public Agriculture[] get農業() {
+    public Agriculture[] get農場() {
         return 農場;
     }
 
-    public void set農業(Agriculture[] 農業) {
-        this.農場 = 農業;
+    public void set農場(Agriculture[] 農場) {
+        this.農場 = 農場;
     }
 
-    public Agriculture[] get礦場() {
+    public Agriculture[] get礦山() {
         return 礦山;
     }
 
-    public void set礦場(Agriculture[] 礦場) {
-        this.礦山 = 礦場;
+    public void set礦山(Agriculture[] 礦山) {
+        this.礦山 = 礦山;
     }
 
     public Agriculture[] get神廟() {
@@ -187,12 +208,12 @@ public class Player {
         this.實驗室 = 實驗室;
     }
 
-    public Agriculture[] get戰士() {
+    public Agriculture[] get步兵() {
         return 步兵;
     }
 
-    public void set戰士(Agriculture[] 戰士) {
-        this.步兵 = 戰士;
+    public void set步兵(Agriculture[] 步兵) {
+        this.步兵 = 步兵;
     }
 
     public Agriculture[] get騎兵() {
@@ -251,11 +272,11 @@ public class Player {
         this.手上的牌 = 手上的牌;
     }
 
-    public Agriculture get農業(int k) {
+    public Agriculture get農場(int k) {
         return 農場[k];
     }
 
-    public Agriculture get礦場(int k) {
+    public Agriculture get礦山(int k) {
         return 礦山[k];
     }
 
@@ -267,7 +288,7 @@ public class Player {
         return 實驗室[k];
     }
 
-    public Agriculture get戰士(int k) {
+    public Agriculture get步兵(int k) {
         return 步兵[k];
     }
 
@@ -295,26 +316,11 @@ public class Player {
         return 圖書館[k];
     }
 
-//    public void set農業(Agriculture[] 農業) {
-//        this.農業 = 農業;
-//    }
-//    private int 神廟;
-//    private int 實驗室;
-//    private int 戰士;
-//    private int 騎兵;
-//    private int 砲兵;
-//    private int 飛機;
-//    private int 競技場;
-//    private int 劇院;
-//    private int 圖書館;
+
     private int 工人閒置區;
     private int 黃點工人供應區;
     private int 藍點資源供應區;
 
-////      === TODO ===  
-//    1, 在Player內設置I時代所有的科技牌位置
-//    2, 在Player內設置當前領袖位置.戰術牌位置.待建奇蹟位置.建好的奇蹟.值民地位置
-//    done, 目前第二個玩家有可能用兩個內政點數拿兩張時代A的領袖牌,應予以制止
     public int get內政點數() {
         return 內政點數;
     }
@@ -357,28 +363,20 @@ public class Player {
 
     private List<Card> 手上的牌;
 
+    //起始設定
     public Player() {
 
-        //    private int 神廟;
-//    private int 實驗室;
-//    private int 戰士;
-//    private int 騎兵;
-//    private int 砲兵;
-//    private int 飛機;
-//    private int 競技場;
-//    private int 劇院;
-//    private int 圖書館;
         點數 = new Score();
         for (int k = 0; k < 4; k++) {
             農場[k] = new Agriculture(0, 0, false, false);
             礦山[k] = new Agriculture(0, 0, false, false);
             神廟[k] = new Agriculture(0, 0, false, false);
             實驗室[k] = new Agriculture(0, 0, false, false);
-            
+
             競技場[k] = new Agriculture(0, 0, false, false);
             劇院[k] = new Agriculture(0, 0, false, false);
             圖書館[k] = new Agriculture(0, 0, false, false);
-            
+
             步兵[k] = new Agriculture(0, 0, false, false);
             騎兵[k] = new Agriculture(0, 0, false, false);
             砲兵[k] = new Agriculture(0, 0, false, false);
@@ -441,10 +439,46 @@ public class Player {
 
     public void 執行生產() {
         for (int k = 0; k < 4; k++) {
-            get農業(k).set藍點(get農業(k).get藍點() + get農業(k).get黃點());
-            get礦場(k).set藍點(get礦場(k).get藍點() + get礦場(k).get黃點());
+            get農場(k).set藍點(get農場(k).get藍點() + get農場(k).get黃點());
+            get礦山(k).set藍點(get礦山(k).get藍點() + get礦山(k).get黃點());
         }
-//  農業(k).set藍點(農業(k).get藍點() + 農業(k).get黃點());
+    }
+
+//    待加入 非起始科技，特殊科技，領袖，奇蹟，殖民地
+//      食物 資源
+//      文化 文化生產
+//    科技 科技生產
+//    軍力 笑臉
+    public void 展示現況() {
+        for (int k = 0; k < 4; k++) {
+//             for (int k =4; k >0; k--) {
+            if (get農場(k).is打出() == true) {
+                System.out.print("農場" + k + "  " + get農場(k).get黃點() + "(黃點)/" + get農場(k).get藍點() + "(藍點)  ");
+            } else {
+                System.out.print("                        ");
+            }
+            if (get礦山(k).is打出() == true) {
+                System.out.print("礦山" + k + "  " + get礦山(k).get黃點() + "(黃點)/" + get農場(k).get藍點() + "(藍點)  ");
+            } else {
+                System.out.print("                        ");
+            }
+            if (get實驗室(k).is打出() == true) {
+                System.out.print("實驗室" + k + "  " + get實驗室(k).get黃點() + "(黃點)  ");
+            } else {
+                System.out.print("                        ");
+            }
+            if (get神廟(k).is打出() == true) {
+                System.out.print("神廟" + k + "  " + get神廟(k).get黃點() + "(黃點)  ");
+            } else {
+                System.out.print("                        ");
+            }
+            if (get步兵(k).is打出() == true) {
+                System.out.println("步兵" + k + "  " + get步兵(k).get黃點() + "(黃點)  ");
+            } else {
+                System.out.println("                        ");
+            }
+        }
+
     }
 
     public void do拿取(int 內政點數, Card 內政牌) {
@@ -457,18 +491,18 @@ public class Player {
             System.out.println(" " + 手上的牌.get(k));
         }
     }
-
-    public void show() {
-        System.out.print(" 手上的牌 ");
-        show手上的牌();
-        System.out.print("  礦場=" + 礦山);
-        System.out.print("  神廟=" + 神廟);
-        System.out.print("  實驗室=" + 實驗室);
-        System.out.print("  戰士=" + 步兵);
-        System.out.print("  工人閒置區=" + 工人閒置區);
-        System.out.println("  " + toString());
-
-    }
+//
+//    public void show() {
+//        System.out.print(" 手上的牌 ");
+//        show手上的牌();
+//        System.out.print("  礦場=" + 礦山);
+//        System.out.print("  神廟=" + 神廟);
+//        System.out.print("  實驗室=" + 實驗室);
+//        System.out.print("  戰士=" + 步兵);
+//        System.out.print("  工人閒置區=" + 工人閒置區);
+//        System.out.println("  " + toString());
+//
+//    }
 
     @Override
     public String toString() {

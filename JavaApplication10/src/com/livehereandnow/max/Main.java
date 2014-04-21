@@ -95,17 +95,17 @@ public class Main implements CardType {
         myGame.startGame();
 
     }
-
-    public void 顯示狀態() {
-
-        //    System.out.println("第一回合結束");
-        System.out.print("玩家1");
-        p1.show();
-        System.out.print("玩家2");
-        p2.show();
-        System.out.println("-------------------------------------------------");
-
-    }
+//
+//    public void 顯示狀態() {
+//
+//        //    System.out.println("第一回合結束");
+//        System.out.print("玩家1");
+//        p1.show();
+//        System.out.print("玩家2");
+//        p2.show();
+//        System.out.println("-------------------------------------------------");
+//
+//    }
     /*    Card card3 = new Card(3, "亞里士多得", 0, CardType.領袖);
      Card card18 = new Card(18, "建築工地", 0, CardType.黃牌);
      Card card21 = new Card(21, "摩西", 0, CardType.領袖);
@@ -243,7 +243,7 @@ public class Main implements CardType {
         p2.set文明食物資源科技(0, 0, 0, 0);
 
         System.out.println("初始狀態");
-        顯示狀態();
+//        顯示狀態();
         System.out.println("第一回合開始");
         System.out.println("給第1個玩家1個內政點");
         p1.set內政點數(1);
@@ -260,7 +260,7 @@ public class Main implements CardType {
         // 顯示狀態();
         //模擬第一回合的動作
 
-        顯示狀態();
+//        顯示狀態();
 
     }
 
