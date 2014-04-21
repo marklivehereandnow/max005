@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ === 需求 ===
+ 想要降低 在GameEngine裡面程式碼的
+ 玩家[當前玩家].get農業(0).set藍點(玩家[當前玩家].get農業(0).get藍點()+玩家[當前玩家].get農業(0).get黃點());
+
+
  */
 package com.livehereandnow.max;
 
@@ -12,7 +14,6 @@ import java.util.List;
  *
  * @author max
  */
-
 public class Player {
 
 //    //生產
@@ -23,8 +24,15 @@ public class Player {
 //        
 //    }
 //           }
+//
+//    
+//    
+//    
+//    
+//    
+//    
+    public class Score {
 
-    public class Score{
         int 文化;
         int 科技;
         int 食物;
@@ -34,7 +42,7 @@ public class Player {
         public String toString() {
             return "Score{" + "\u6587\u5316=" + 文化 + ", \u79d1\u6280=" + 科技 + ", \u98df\u7269=" + 食物 + ", \u8cc7\u6e90=" + 資源 + '}';
         }
-        
+
         public int get文化() {
             return 文化;
         }
@@ -66,9 +74,9 @@ public class Player {
         public void set資源(int 資源) {
             this.資源 = 資源;
         }
-        
+
     }
-    
+
 //  A{文明,食物,资源,科技}={0,0,0,0}
     private int 文明;
     private Score 點數;
@@ -76,7 +84,7 @@ public class Player {
     public Score get點數() {
         return 點數;
     }
-    
+
     private int 食物;//請列出食物點數的計算方式
     //當我們要計算花費食物的時候要呼叫食物的副程式
     //
@@ -106,7 +114,7 @@ public class Player {
     private int 內政點數;//該玩家即時的內政點數
     private int 軍事點數;
 //        System.out.println("    2, 在Player內設置當前領袖位置.戰術牌位置.待建奇蹟位置.建好的奇蹟.值民地位置,預計花0.5個小時完成,4/20日完成");
-     
+
     //起始面板設置
 //    private int 農業;//黃點數量
 //    private int 農業0;
@@ -122,6 +130,7 @@ public class Player {
 // === 需求分析 ===
 //    農業我們需要有四個物件
 //    每個物件要能記錄黃點、藍點、是否拿取、是否打出
+    // === 原本想要的，就跟醫生講說開個止痛藥給我 ===
 //   public void get農業黃點[x](int 農業黃點) 
 //   public void set農業黃點[x](int 農業黃點)
 //   public void get農業藍點[x](int 農業藍點) 
@@ -133,34 +142,33 @@ public class Player {
 //    private int[] 農業=new int[4];//存放黃點數量
 //    private boolean[] 打出農業科技=new boolean[4];//記錄科技是否已經啟用
 ////    private boolean[] 打出農業科技=new boolean[4];//記錄科技是否已經啟用
-    
     //科技區
-    Agriculture[] 農業 = new Agriculture[4];
-    Agriculture[] 礦場 = new Agriculture[4];//礦業的需求與農業相同，
-    Agriculture[] 神廟 = new Agriculture[4];
-    Agriculture[] 實驗室 = new Agriculture[4];
-    Agriculture[] 戰士 = new Agriculture[4];
-    Agriculture[] 騎兵 = new Agriculture[4];
-    Agriculture[] 砲兵 = new Agriculture[4];
-    Agriculture[] 飛機 = new Agriculture[4];
-    Agriculture[] 競技場 = new Agriculture[4];
-    Agriculture[] 劇院 = new Agriculture[4];
-    Agriculture[] 圖書館 = new Agriculture[4];
+    private Agriculture[] 農場 = new Agriculture[4];
+    private Agriculture[] 礦山 = new Agriculture[4];//礦業的需求與農業相同，
+    private Agriculture[] 神廟 = new Agriculture[4];
+    private Agriculture[] 實驗室 = new Agriculture[4];
+    private Agriculture[] 步兵 = new Agriculture[4];
+    private Agriculture[] 騎兵 = new Agriculture[4];
+    private Agriculture[] 砲兵 = new Agriculture[4];
+    private Agriculture[] 飛機 = new Agriculture[4];
+    private Agriculture[] 競技場 = new Agriculture[4];
+    private Agriculture[] 劇院 = new Agriculture[4];
+    private Agriculture[] 圖書館 = new Agriculture[4];
 
     public Agriculture[] get農業() {
-        return 農業;
+        return 農場;
     }
 
     public void set農業(Agriculture[] 農業) {
-        this.農業 = 農業;
+        this.農場 = 農業;
     }
 
     public Agriculture[] get礦場() {
-        return 礦場;
+        return 礦山;
     }
 
     public void set礦場(Agriculture[] 礦場) {
-        this.礦場 = 礦場;
+        this.礦山 = 礦場;
     }
 
     public Agriculture[] get神廟() {
@@ -180,11 +188,11 @@ public class Player {
     }
 
     public Agriculture[] get戰士() {
-        return 戰士;
+        return 步兵;
     }
 
     public void set戰士(Agriculture[] 戰士) {
-        this.戰士 = 戰士;
+        this.步兵 = 戰士;
     }
 
     public Agriculture[] get騎兵() {
@@ -244,11 +252,11 @@ public class Player {
     }
 
     public Agriculture get農業(int k) {
-        return 農業[k];
+        return 農場[k];
     }
 
     public Agriculture get礦場(int k) {
-        return 礦場[k];
+        return 礦山[k];
     }
 
     public Agriculture get神廟(int k) {
@@ -260,7 +268,7 @@ public class Player {
     }
 
     public Agriculture get戰士(int k) {
-        return 戰士[k];
+        return 步兵[k];
     }
 
     public Agriculture get騎兵(int k) {
@@ -299,7 +307,6 @@ public class Player {
 //    private int 競技場;
 //    private int 劇院;
 //    private int 圖書館;
-
     private int 工人閒置區;
     private int 黃點工人供應區;
     private int 藍點資源供應區;
@@ -323,7 +330,6 @@ public class Player {
     public void set軍事點數(int 軍事點數) {
         this.軍事點數 = 軍事點數;
     }
-
 
     public int get工人閒置區() {
         return 工人閒置區;
@@ -362,28 +368,29 @@ public class Player {
 //    private int 競技場;
 //    private int 劇院;
 //    private int 圖書館;
-        點數=new Score();
-        for(int k=0;k<4;k++){
-            農業[k] = new Agriculture(0, 0, false, false);
-            礦場[k] = new Agriculture(0, 0, false, false);
+        點數 = new Score();
+        for (int k = 0; k < 4; k++) {
+            農場[k] = new Agriculture(0, 0, false, false);
+            礦山[k] = new Agriculture(0, 0, false, false);
             神廟[k] = new Agriculture(0, 0, false, false);
             實驗室[k] = new Agriculture(0, 0, false, false);
-            戰士[k] = new Agriculture(0, 0, false, false);
-            騎兵[k] = new Agriculture(0, 0, false, false);
-            砲兵[k] = new Agriculture(0, 0, false, false);
-            飛機[k] = new Agriculture(0, 0, false, false);
+            
             競技場[k] = new Agriculture(0, 0, false, false);
             劇院[k] = new Agriculture(0, 0, false, false);
             圖書館[k] = new Agriculture(0, 0, false, false);
             
+            步兵[k] = new Agriculture(0, 0, false, false);
+            騎兵[k] = new Agriculture(0, 0, false, false);
+            砲兵[k] = new Agriculture(0, 0, false, false);
+            飛機[k] = new Agriculture(0, 0, false, false);
+
         }
-        農業[0] = new Agriculture(2, 0, true, true);
-        礦場[0] = new Agriculture(2, 0, true, true);
+        農場[0] = new Agriculture(2, 0, true, true);
+        礦山[0] = new Agriculture(2, 0, true, true);
         神廟[0] = new Agriculture(0, 0, true, true);
         實驗室[0] = new Agriculture(1, 0, true, true);
-        戰士[0] = new Agriculture(1, 0, true, true);
+        步兵[0] = new Agriculture(1, 0, true, true);
 
-        
         文明 = 0;
         食物 = 0;
         資源 = 0;
@@ -430,6 +437,15 @@ public class Player {
     public void set科技(int 科技) {
         this.科技 = 科技;
     }
+//
+
+    public void 執行生產() {
+        for (int k = 0; k < 4; k++) {
+            get農業(k).set藍點(get農業(k).get藍點() + get農業(k).get黃點());
+            get礦場(k).set藍點(get礦場(k).get藍點() + get礦場(k).get黃點());
+        }
+//  農業(k).set藍點(農業(k).get藍點() + 農業(k).get黃點());
+    }
 
     public void do拿取(int 內政點數, Card 內政牌) {
         手上的牌.add(內政牌);
@@ -445,10 +461,10 @@ public class Player {
     public void show() {
         System.out.print(" 手上的牌 ");
         show手上的牌();
-        System.out.print("  礦場=" + 礦場);
+        System.out.print("  礦場=" + 礦山);
         System.out.print("  神廟=" + 神廟);
         System.out.print("  實驗室=" + 實驗室);
-        System.out.print("  戰士=" + 戰士);
+        System.out.print("  戰士=" + 步兵);
         System.out.print("  工人閒置區=" + 工人閒置區);
         System.out.println("  " + toString());
 

@@ -38,7 +38,6 @@ public class GameEngine {
     private List<Card> player3Cards;
     private List<Card> player4Cards;
 
-
     private Player[] 玩家 = new Player[4];
 
     public Player get玩家(int k) {
@@ -93,7 +92,7 @@ public class GameEngine {
     }
 
     public void doStatus() {
-        
+
         showCardRow();
         System.out.println();
         System.out.println("   === Round #" + roundNum + " ===");
@@ -140,9 +139,22 @@ public class GameEngine {
 
     public void doChangeTurn() {
 
-        System.out.println(玩家[當前玩家].get農業(0).get藍點());
-        玩家[當前玩家].get農業(0).set藍點(玩家[當前玩家].get農業(0).get藍點()+玩家[當前玩家].get農業(0).get黃點());
-        System.out.println(玩家[當前玩家].get農業(0).get藍點());
+        System.out.println("運行doChangeTurn");
+        System.out.println("\n當前玩家農業A上面的藍點為" + 玩家[當前玩家].get農業(0).get藍點());
+//        依照農場A黃點的值，增加農場A的藍點---自評8分
+        /*
+         設定[當前玩家在時代A的農業的藍點指數]=[當前玩家的時代A的農業的藍點]+[當前玩家的時代A的農業的黃點]
+         [當前玩家的時代A的農業的藍點]=
+         [當前玩家的時代A的農業的黃點]=
+        
+         */
+//        玩家[當前玩家].get農業(0).set藍點(玩家[當前玩家].get農業(0).get藍點() + 玩家[當前玩家].get農業(0).get黃點());
+//      希望在Player有像這樣的一個高階指令
+//        玩家[當前玩家].get農業(0).執行生產
+        玩家[當前玩家].執行生產();
+
+        System.out.println("運行XXX後");
+        System.out.println("當前玩家農業A上面的藍點為" + 玩家[當前玩家].get農業(0).get藍點());
         if (當前玩家 == 玩家人數) {
             當前玩家 = 1;
             roundNum++;
@@ -166,14 +178,12 @@ public class GameEngine {
 
         當前玩家 = 1;
         roundNum = 1;
-        
 
         玩家[0].set內政點數(1);
         玩家[1].set內政點數(2);
         玩家[2].set內政點數(3);
         玩家[3].set內政點數(4);
 
-        
         Cards cards = new Cards();
         ageA內政牌 = cards.get時代A內政牌();
 
@@ -303,8 +313,10 @@ public class GameEngine {
 
         System.out.println();
 
-        
-        
+        System.out.println("  === ver 0.19 ===  2014-4-21, 11:33, by MAX　");
+        System.out.println("    1. 將繁瑣的程式碼，放到該屬於Player自有的地方執行");
+        System.out.println("    2. 將單一時代的農業擴展為4個時代");
+        System.out.println("    3. 將農業擴展到其他科技");
         System.out.println("  === ver 0.18 ===  2014-4-21, 10:32, by MAX　");
         System.out.println("    1. 設定成功依照私有板塊獲得對應的資源");
         System.out.println("  === ver 0.17.1 ===  2014-4-19, 11:34, by MAX　");
