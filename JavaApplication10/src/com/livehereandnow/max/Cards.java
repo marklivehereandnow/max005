@@ -21,15 +21,10 @@ public class Cards implements CardType {
         return cards;
     }
 
-    public List<Card> get時代A內政牌版本１() {
-        return cardwa;
-    }
-
     public List<Card> get時代A內政牌() {
         List<Card> 時代A內政牌 = new ArrayList<>();
         for (int k = 0; k < cards.size(); k++) {
             if ((cards.get(k).時代 == 0) && (cards.get(k).牌背 == 內政)) {
-//            if ((cards.get(k).時代 == 0)) {//測試用
                 時代A內政牌.add(cards.get(k));
             }
         }
@@ -37,31 +32,6 @@ public class Cards implements CardType {
     }
 
     public Cards() {
-
-        cardwa = new ArrayList<>();
-        cardwa.add(new Card(1, "亞歷山大大帝", 0, 內政, 領袖, 綠色, "領袖", "每一個紅色科技牌上的黃點，軍力+1", "0"));
-        cardwa.add(new Card(2, "亞里士多得", 0, 內政, 領袖, 綠色, "領袖", "拿取科技牌時，科技+1", "0"));
-        cardwa.add(new Card(3, "凱薩", 0, 內政, 領袖, 綠色, "領袖", "軍力+1，軍事點數+1", "0"));
-        cardwa.add(new Card(4, "摩西", 0, 內政, 領袖, 綠色, "領袖", "擴充人口，食物需求-1", "0"));
-        cardwa.add(new Card(5, "漢摩拉比", 0, 內政, 領袖, 綠色, "領袖", "內政點數+1，軍事點數-1", "0"));
-        cardwa.add(new Card(6, "亞歷山大圖書館", 0, 內政, 奇蹟, 紫色, "奇蹟", "科技生產+1，文化生產+1，內政手牌上限+1，軍事手牌上限+1", "1,2,2,1"));
-        cardwa.add(new Card(7, "巨人像", 0, 內政, 奇蹟, 紫色, "奇蹟", "軍力+1，文化生產+1，殖民點數+1", "3,3"));
-        cardwa.add(new Card(8, "空中花園", 0, 內政, 奇蹟, 紫色, "奇蹟", "笑臉+2，文化生產+1", "2,2,2"));
-        cardwa.add(new Card(9, "金字塔", 0, 內政, 奇蹟, 紫色, "奇蹟", "內政點數+1", "3,2,1"));
-        cardwa.add(new Card(10, "專制", 0, 內政, 科技, 橙色, "政府", "內政點數+4，軍事點數+2", "0"));
-        cardwa.add(new Card(11, "宗教", 0, 內政, 科技, 灰色, "神廟", "笑臉+1，文化生產+1", "3"));
-        cardwa.add(new Card(12, "農業", 0, 內政, 科技, 棕色, "農場", "食物生產+1", "2"));
-        cardwa.add(new Card(13, "哲學", 0, 內政, 科技, 灰色, "實驗室", "科技生產+1", "3"));
-        cardwa.add(new Card(14, "戰士", 0, 內政, 科技, 紅色, "步兵", "軍力+1", "2"));
-        cardwa.add(new Card(15, "青銅", 0, 內政, 科技, 棕色, "礦山", "資源生產+1", "2"));
-        cardwa.add(new Card(16, "富饒之土", 0, 內政, 行動, 黃色, "行動", "提供1資源建造農場或是礦山", "0"));
-        cardwa.add(new Card(17, "工程天才", 0, 內政, 行動, 黃色, "行動", "提供2資源建造奇蹟", "0"));
-        cardwa.add(new Card(18, "藝術作品", 0, 內政, 行動, 黃色, "行動", "文化+6", "0"));
-        cardwa.add(new Card(19, "節儉", 0, 內政, 行動, 黃色, "行動", "支付正常價格擴充人口後，獲得1食物", "0"));
-        cardwa.add(new Card(20, "荷馬", 0, 內政, 領袖, 綠色, "領袖", "建造戰士，資源需求-1(1回合1次)，回合結束戰士上的黃點提供文化生產+1(最多2)", "0"));
-        cardwa.add(new Card(21, "建築工地", 0, 內政, 行動, 黃色, "行動", "提供1資源建造非農場或礦山的建築", "0"));
-        cardwa.add(new Card(22, "愛國主義", 0, 內政, 行動, 黃色, "行動", "軍事點數+1，提供1資源用於建造或升級軍隊", "0"));
-        cardwa.add(new Card(23, "革新思想", 0, 內政, 行動, 黃色, "行動", "科技+1", "0"));
 
         cards = new ArrayList<>();
         cards.add(new Card(1, "亞歷山大大帝", 0, 內政, 領袖, 綠色, "領袖", "每一個紅色科技牌上的黃點，軍力+1", "0"));

@@ -38,22 +38,13 @@ public class GameEngine {
     private List<Card> player3Cards;
     private List<Card> player4Cards;
 
-//    private　Player[] 玩家 = new Player[4];
-//        private　Player[] ccddd = new Player[4];
+
     private Player[] 玩家 = new Player[4];
 
     public Player get玩家(int k) {
         return 玩家[k];
     }
-//    private Player p1;
-//    private Player p2;
-//    private Player p3;
-//    private Player p4;
 
-//    boolean isPlayer1PossessedAgeALeader=false;
-//    boolean isPlayer2PossessedAgeALeader=false;
-//    boolean isPlayer3PossessedAgeALeader=false;
-//    boolean isPlayer4PossessedAgeALeader=false;
     boolean[] playerPossessedAgeALeader = new boolean[5];// for Player 1 to Player 4
 
     public boolean isPlayerPossessedAgeALeader(int k) {
@@ -64,21 +55,6 @@ public class GameEngine {
         this.playerPossessedAgeALeader[k] = true;
     }
 
-//    public Player getP1() {
-//        return p1;
-//    }
-//
-//    public Player getP2() {
-//        return p2;
-//    }
-//
-//    public Player getP3() {
-//        return p3;
-//    }
-//
-//    public Player getP4() {
-//        return p4;
-//    }
     final Card NOCARD = new Card(999, "", 0, CardType.EMPTY);
 //    int playerm
 //    2014-4-16 max 10:32,使用refactor變更變量名稱
@@ -91,68 +67,21 @@ public class GameEngine {
     }
 
     public void do拿牌扣點(int 點數) {
-
-//        if (當前玩家 == 1) {
         玩家[當前玩家 - 1].set內政點數(玩家[當前玩家 - 1].get內政點數() - 點數);
-//        }
-//        if (當前玩家 == 2) {
-//            玩家[1].set內政點數(玩家[1].get內政點數() - 點數);
-//        }
-//        if (當前玩家 == 3) {
-//            p3.set內政點數(p3.get內政點數() - 點數);
-//        }
-//        if (當前玩家 == 4) {
-//            p4.set內政點數(p4.get內政點數() - 點數);
-//        }
-
     }
 
     public void set拿當前玩家拿過時代A領袖牌() {
-//        if (當前玩家 == 1) {
         玩家[當前玩家 - 1].set拿過的時代A領袖牌數(1);
-//        }
-//        if (當前玩家 == 2) {
-//            p2.set拿過的時代A領袖牌數(1);
-//        }
-
     }
 
     public int get當前玩家內政點數() {
-//        if (當前玩家 == 1) {
         return 玩家[當前玩家 - 1].get內政點數();
-//        }
-//        if (當前玩家 == 2) {
-//            return p2.get內政點數();
-//        }
-//
-//        if (當前玩家 == 3) {
-//            return p3.get內政點數();
-//        }
-//
-//        if (當前玩家 == 4) {
-//            return p4.get內政點數();
-//        }
-//
-//        return -1;//不應該發生
+
     }
 
     public int get當前玩家拿過的時代A領袖牌數() {
-//        if (當前玩家 == 1) {
-        return 玩家[當前玩家 - 1].get拿過的時代A領袖牌數();
-//        }
-//        if (當前玩家 == 2) {
-//            return p2.get拿過的時代A領袖牌數();
-//        }
-//
-//        if (當前玩家 == 3) {
-//            return p3.get拿過的時代A領袖牌數();
-//        }
-//
-//        if (當前玩家 == 4) {
-//            return p4.get拿過的時代A領袖牌數();
-//        }
 
-//        return -1;//不應該發生
+        return 玩家[當前玩家 - 1].get拿過的時代A領袖牌數();
     }
 
     public int get當前玩家() {
@@ -164,6 +93,7 @@ public class GameEngine {
     }
 
     public void doStatus() {
+        
         showCardRow();
         System.out.println();
         System.out.println("   === Round #" + roundNum + " ===");
@@ -210,6 +140,9 @@ public class GameEngine {
 
     public void doChangeTurn() {
 
+        System.out.println(玩家[當前玩家].get農業(0).get藍點());
+        玩家[當前玩家].get農業(0).set藍點(玩家[當前玩家].get農業(0).get藍點()+玩家[當前玩家].get農業(0).get黃點());
+        System.out.println(玩家[當前玩家].get農業(0).get藍點());
         if (當前玩家 == 玩家人數) {
             當前玩家 = 1;
             roundNum++;
@@ -231,24 +164,17 @@ public class GameEngine {
         玩家[2] = new Player();
         玩家[3] = new Player();
 
-//        p1 = 玩家[0];
-//        p2 = 玩家[1];
-//        p3 = 玩家[2];
-//        p4 = 玩家[3];
         當前玩家 = 1;
         roundNum = 1;
-//        p1.set內政點數(1);
-//        p2.set內政點數(2);
-//        p3.set內政點數(3);
-//        p4.set內政點數(4);
+        
 
         玩家[0].set內政點數(1);
         玩家[1].set內政點數(2);
         玩家[2].set內政點數(3);
         玩家[3].set內政點數(4);
 
+        
         Cards cards = new Cards();
-//        ageA內政牌 = new ArrayList<>();
         ageA內政牌 = cards.get時代A內政牌();
 
         cardRow = new ArrayList<>();
@@ -257,31 +183,6 @@ public class GameEngine {
         player3Cards = new ArrayList<>();
         player4Cards = new ArrayList<>();
 
-        // init Age A cards
-//        ageA內政牌.add(new Card(0, "亞歷山大大帝", 0, CardType.領袖, 100));
-//        ageA內政牌.add(new Card(1, "亞里士多得", 0, CardType.領袖, 950));
-//        ageA內政牌.add(new Card(2, "凱薩", 0, CardType.領袖, 999));
-//        ageA內政牌.add(new Card(3, "摩西", 0, CardType.領袖, 300));
-//        ageA內政牌.add(new Card(4, "漢摩拉比", 0, CardType.領袖, 130));
-//        ageA內政牌.add(new Card(5, "亞歷山大圖書館", 0, CardType.奇蹟, 250));
-//        ageA內政牌.add(new Card(6, "巨人像", 0, CardType.奇蹟, 50));
-//        ageA內政牌.add(new Card(7, "空中花園", 0, CardType.奇蹟, 500));
-//        ageA內政牌.add(new Card(8, "金字塔", 0, CardType.奇蹟, 900));
-//        ageA內政牌.add(new Card(15, "富饒之土", 0, CardType.黃牌, 200));
-//        ageA內政牌.add(new Card(16, "工程天才", 0, CardType.黃牌, 850));
-//        ageA內政牌.add(new Card(17, "藝術作品", 0, CardType.黃牌, 1));
-//        ageA內政牌.add(new Card(18, "節儉", 0, CardType.黃牌, 150));
-//        ageA內政牌.add(new Card(19, "荷馬", 0, CardType.領袖, 600));
-//        ageA內政牌.add(new Card(20, "建築工地", 0, CardType.黃牌, 630));
-//        ageA內政牌.add(new Card(21, "愛國主義", 0, CardType.黃牌, 529));
-//        ageA內政牌.add(new Card(22, "革新思想", 0, CardType.黃牌, 774));
-//        ageA內政牌.add(new Card(23, "建築工地", 0, CardType.黃牌, 630));
-//        ageA內政牌.add(new Card(24, "愛國主義", 0, CardType.黃牌, 529));
-//        ageA內政牌.add(new Card(25, "革新思想", 0, CardType.黃牌, 774));
-        //
-//        System.out.println("system >>> init Age A 內政牌");
-//        System.out.println("system >>> " + ageA內政牌);
-        // shuffle cards
         Collections.shuffle(ageA內政牌);
 //        System.out.println("system >>> shuffle Age A 內政牌");
 //        System.out.println("system >>> " + ageA內政牌);
@@ -401,6 +302,11 @@ public class GameEngine {
     public void doVersion() {
 
         System.out.println();
+
+        
+        
+        System.out.println("  === ver 0.18 ===  2014-4-21, 10:32, by MAX　");
+        System.out.println("    1. 設定成功依照私有板塊獲得對應的資源");
         System.out.println("  === ver 0.17.1 ===  2014-4-19, 11:34, by MAX　");
         System.out.println("    1. 變更TODO,預計明日要完成事項");
         System.out.println("  === ver 0.17 ===  2014-4-19, 11:23, by MAX　");
