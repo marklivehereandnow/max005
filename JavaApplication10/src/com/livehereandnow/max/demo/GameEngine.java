@@ -140,7 +140,7 @@ public class GameEngine {
     public void doChangeTurn() {
 
         System.out.println("運行doChangeTurn");
-        System.out.println("\n當前玩家農業A上面的藍點為" + 玩家[當前玩家].get農業(0).get藍點());
+//        System.out.println("\n農業A" + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/"+玩家[當前玩家].get農業(0).get藍點()+"(藍點)");
 //        依照農場A黃點的值，增加農場A的藍點---自評8分
         /*
          設定[當前玩家在時代A的農業的藍點指數]=[當前玩家的時代A的農業的藍點]+[當前玩家的時代A的農業的黃點]
@@ -154,7 +154,17 @@ public class GameEngine {
         玩家[當前玩家].執行生產();
 
         System.out.println("運行XXX後");
-        System.out.println("當前玩家農業A上面的藍點為" + 玩家[當前玩家].get農業(0).get藍點());
+                System.out.print("農業I    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/"+玩家[當前玩家].get農業(0).get藍點()+"(藍點)    ");
+        System.out.print("礦山I    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/"+玩家[當前玩家].get農業(0).get藍點()+"(藍點)    ");
+        System.out.print("實驗室I    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/   ");
+        System.out.print("神廟I    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/ ");
+   System.out.println("步兵I    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/    ");
+        System.out.print("農業A    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/"+玩家[當前玩家].get農業(0).get藍點()+"(藍點)    ");
+        System.out.print("礦山A    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/"+玩家[當前玩家].get農業(0).get藍點()+"(藍點)    ");
+        System.out.print("實驗室A    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/   ");
+        System.out.print("神廟A    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/ ");
+   System.out.println("步兵A    " + 玩家[當前玩家].get農業(0).get黃點()+"(黃點)/    ");
+        //    System.out.println("當前玩家農業A上面的藍點為" + 玩家[當前玩家].get農業(0).get藍點());
         if (當前玩家 == 玩家人數) {
             當前玩家 = 1;
             roundNum++;
@@ -313,6 +323,8 @@ public class GameEngine {
 
         System.out.println();
 
+        System.out.println("  === ver 0.19.1 ===  2014-4-21, 11:50, by MAX　");
+        System.out.println("    1. 建立展示點數雛型");
         System.out.println("  === ver 0.19 ===  2014-4-21, 11:33, by MAX　");
         System.out.println("    1. 將繁瑣的程式碼，放到該屬於Player自有的地方執行");
         System.out.println("    2. 將單一時代的農業擴展為4個時代");
