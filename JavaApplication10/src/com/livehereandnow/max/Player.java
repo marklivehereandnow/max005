@@ -58,7 +58,7 @@ public class Player {
         int 科技生產;
         int 笑臉;
         int 軍力;
-        
+
         @Override
         public String toString() {
             return "Score{" + "\u6587\u5316=" + 文化 + ", \u79d1\u6280=" + 科技 + ", \u98df\u7269=" + 食物 + ", \u8cc7\u6e90=" + 資源 + '}';
@@ -316,7 +316,6 @@ public class Player {
         return 圖書館[k];
     }
 
-
     private int 工人閒置區;
     private int 黃點工人供應區;
     private int 藍點資源供應區;
@@ -450,8 +449,10 @@ public class Player {
 //    科技 科技生產
 //    軍力 笑臉
     public void 展示現況() {
-        for (int k = 0; k < 4; k++) {
-//             for (int k =4; k >0; k--) {
+//        System.out.println("執行展示...");
+//        for (int k = 0; k < 4; k++) {
+        for (int k = 3; k >=0; k--) {
+//            System.out.println("k="+k);
             if (get農場(k).is打出() == true) {
                 System.out.print("農場" + k + "  " + get農場(k).get黃點() + "(黃點)/" + get農場(k).get藍點() + "(藍點)  ");
             } else {

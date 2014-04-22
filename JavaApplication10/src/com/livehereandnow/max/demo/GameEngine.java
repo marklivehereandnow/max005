@@ -34,7 +34,8 @@ public class GameEngine {
     private List<Card> ageA內政牌;
     private List<Card> cardRow;
 //  待優化  
-    private List<Card> player1Cards;
+    private List<Card> 玩家1手牌;
+    private List<Card> 玩家1桌牌;
     private List<Card> player2Cards;
     private List<Card> player3Cards;
     private List<Card> player4Cards;
@@ -97,10 +98,13 @@ public class GameEngine {
         showCardRow();
         System.out.println();
         System.out.println("   === Round #" + roundNum + " ===");
-        System.out.println("   Player 1 內政點數=" + 玩家[0].get內政點數() + getPlayerCardsString(player1Cards));
+        System.out.println("   Player 1 內政點數=" + 玩家[0].get內政點數() + "   手上的牌 " + getPlayerCardsString(玩家1手牌));
+       System.out.println( "  桌上的牌 " + getPlayerCardsString(玩家1桌牌));
         System.out.println("   Player 1 " + 玩家[0].get點數());
 
-        System.out.println("   Player 2 內政點數=" + 玩家[1].get內政點數() + getPlayerCardsString(player2Cards));
+        System.out.println("   Player 2 內政點數=" + 玩家[1].get內政點數() + "   手上的牌 " + getPlayerCardsString(player2Cards));
+        System.out.println("   Player 2 " + 玩家[1].get點數());
+
         if (玩家人數 >= 3) {
             System.out.println("   Player 3 內政點數=" + 玩家[2].get內政點數() + getPlayerCardsString(player3Cards));
         }
@@ -155,7 +159,7 @@ public class GameEngine {
         玩家[當前玩家].執行生產();
 
         System.out.println("運行XXX後");
-玩家[當前玩家].展示現況();
+        玩家[當前玩家].展示現況();
 //        System.out.print("農業I " + 玩家[當前玩家].get農場(0).get黃點() + "(黃點)/" + 玩家[當前玩家].get農場(0).get藍點() + "(藍點)    ");
 //        System.out.print("礦山I  " + 玩家[當前玩家].get農場(0).get黃點() + "(黃點)/" + 玩家[當前玩家].get農場(0).get藍點() + "(藍點)    ");
 //        System.out.print("實驗室I  " + 玩家[當前玩家].get農場(0).get黃點() + "(黃點)/   ");
@@ -200,10 +204,11 @@ public class GameEngine {
         ageA內政牌 = cards.get時代A內政牌();
 
         cardRow = new ArrayList<>();
-        player1Cards = new ArrayList<>();
+        玩家1手牌 = new ArrayList<>();
         player2Cards = new ArrayList<>();
         player3Cards = new ArrayList<>();
         player4Cards = new ArrayList<>();
+        玩家1桌牌= new ArrayList<>();
 
         Collections.shuffle(ageA內政牌);
 //        System.out.println("system >>> shuffle Age A 內政牌");
@@ -254,10 +259,10 @@ public class GameEngine {
         // === preparation for take-card ===拿牌前的準備
         //(1)enough point to take card點數要夠
         int cardPoint = CARD_POINT[k];
-        if (get當前玩家內政點數() < cardPoint) {
-            System.out.println("Not enough point to take card. ***Nothing happened***");
-            return true;
-        }
+//        if (get當前玩家內政點數() < cardPoint) {
+//            System.out.println("Not enough point to take card. ***Nothing happened***");
+//            return true;
+//        }
 
         //(2)not allow to take any card which is being taken within this round 不允許拿空牌
         if (card.get卡名().length() == 0) {
@@ -277,7 +282,7 @@ public class GameEngine {
         // === maintain take-card successfully ===
         switch (當前玩家) {
             case 1:
-                player1Cards.add(cardRow.get(k));
+                玩家1手牌.add(cardRow.get(k));
                 break;
             case 2:
                 player2Cards.add(cardRow.get(k));
@@ -325,6 +330,12 @@ public class GameEngine {
 
         System.out.println();
 
+                System.out.println("  === ver 0.21 ===  2014-4-22, 12:21, by MAX　");
+        System.out.println("    1. 新增out-card指令用於打出手牌");
+        System.out.println("    2. 增加玩家桌面的牌");
+        System.out.println("    3. 顯示桌牌的內容");
+        System.out.println("    4. 為方便測試暫時取消點數限制，能在第一回合取多張牌");
+        System.out.println("    5.手上多張牌可以一直打第0張，能夠順利打到桌上，但是無法打第1張???");
         System.out.println("  === ver 0.20 ===  2014-4-22, 01:55, by MAX　");
         System.out.println("    1. 展示區改由Player提供方法");
         System.out.println("    2. 重新定義農業、礦業、戰士改為農場、礦山、步兵");
@@ -474,8 +485,44 @@ public class GameEngine {
                 return true;
             }
 
+//            case "out":{
+//                玩家1手牌
+//            }
             default:
+                if (tokens.get(0).equalsIgnoreCase("out-card") || tokens.get(0).equalsIgnoreCase("out")) {//新增一個指令如果是out-card或是out開頭就會到這邊來
+                    if (tokens.size() != 2) { // 
+                        System.out.println("指令必須是2個字，第一個字已經是out-card或是out");
+                        return false;
+                    }
+                    int cardNum = Integer.parseInt(tokens.get(1));
+                    System.out.println("手牌共有幾張" + 玩家1手牌.size() + "張");
+                    System.out.println("要打第" + cardNum + "張");
+                    if(玩家1手牌.size()==0)
+                    {
+                        System.out.println("手上沒有牌不能打");
+                        return true;
+                    }
+                    if (玩家1手牌.size() < cardNum + 1) {//當手上只有一張牌時，玩家1手牌SIZE=手上有幾張
+                        System.out.println("你只能選擇0到" + (玩家1手牌.size()-1));
+                        
+                        return true;
+                    }
 
+                    System.out.println("打牌這張牌是" + 玩家1手牌.get(cardNum));
+                    System.out.println("DOING打牌後手牌消失在桌牌上顯示" );
+                    System.out.println("該玩家手牌為:"+玩家1手牌.get(cardNum) );
+                    玩家1桌牌.add(玩家1手牌.get(cardNum));
+                    玩家1手牌.remove(cardNum);
+//                    for(k=0;k<50;k++)
+//                    if(玩家1手牌.get(cardNum).get編號()==k){
+//                        玩家[0].
+//                    }
+                    System.out.println("該玩家桌牌為:"+玩家1桌牌.get(cardNum) );
+                    
+                    
+                    return true;
+
+                }
                 if (tokens.get(0).equalsIgnoreCase("take-card") || tokens.get(0).equalsIgnoreCase("take")) {//簡易指令take
                     if (tokens.size() != 2) { // take-card X, X is a must 目前只支持一次拿一張卡
                         return false;
