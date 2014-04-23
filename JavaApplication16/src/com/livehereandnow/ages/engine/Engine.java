@@ -253,6 +253,8 @@ public class Engine {
             cardRow.add(k, NOCARD);//並在卡牌列同一個位置增加空牌
         } else {
             System.out.println("拿牌沒有成功" + card.get卡名());
+            System.out.println("拿牌沒有成功的原因:"+get當前玩家().get失敗原因());
+            
         }
 
         //    do拿牌扣點(cardPoint);
@@ -286,6 +288,11 @@ public class Engine {
 
         System.out.println();
 
+                System.out.println("  === ver 0.26 ===  2014-4-23, 12:44, by Max　");
+        System.out.println("    1. 實施拿牌沒有成功的原因");
+        System.out.println("    2. done 拿牌沒有成功的原因:已經拿過0時代的領袖牌");
+        System.out.println("    3. TODO 內政點數不夠，已經拿過該科技牌，尚有未完成的奇蹟");
+        
         System.out.println("  === ver 0.25 ===  2014-4-23, 12:06, by Max　");
         System.out.println("    1. 在Player裡面增加 應對拿牌不同的類型，做出不同的判斷方式(目前只做了領袖跟一半的奇蹟)");
         System.out.println("    2.  在Emgine做take-card如果遭遇回傳false 顯示該牌");

@@ -18,8 +18,17 @@ public class Player {
 
     private String name;
 
+    private String 失敗原因;
     public String getName() {
         return name;
+    }
+
+    public String get失敗原因() {
+        return 失敗原因;
+    }
+
+    public void set失敗原因(String 失敗原因) {
+        this.失敗原因 = 失敗原因;
     }
 
     public void setName(String name) {
@@ -385,6 +394,7 @@ public class Player {
     //起始設定
     public Player() {
 
+        失敗原因 ="";
         點數 = new Score();
         for (int k = 0; k < 4; k++) {
             已拿取時代領袖[k] = false;
@@ -508,6 +518,7 @@ public class Player {
 
     }
 
+    
     /**
      * 玩家拿牌，基本規則可查詢，http://www.livehereandnow.com/?page_id=2259 1.1.1.2.1
      * 拿過領袖的記錄，在Player 設定一個boolean 領袖牌[k] k為時代 1.1.1.3.1
@@ -521,7 +532,8 @@ public class Player {
     public boolean doTakeCard(int cost, Card card) {
         //TODO check any not allowed...
 
-        switch (card.get類型()) {
+        this.set失敗原因("無失敗紀錄");
+                switch (card.get類型()) {
             case CardType.奇蹟: {
                 cardsOnTable.add(card);
                 break;
@@ -529,7 +541,9 @@ public class Player {
             case CardType.領袖: {//當拿取領袖牌的時候，
 
                 if (this.is已拿取時代領袖(card.時代)) {//先檢測是否拿過該時代的領袖牌
-                    System.out.println("已經拿過" + card.時代 + "時代的領袖牌");//          如果拿過，則提示已經拿過， 
+                    
+                    this.set失敗原因("已經拿過" + card.時代 + "時代的領袖牌");
+//                    System.out.println("已經拿過" + card.時代 + "時代的領袖牌");//          如果拿過，則提示已經拿過， 
                     return false;//並否決玩家的行動，以return false告知調用的程序，這次拿牌沒有成功
                 } else {
 //                     System.out.println("還沒拿過"+card.時代+"時代的領袖牌");
@@ -537,7 +551,6 @@ public class Player {
 
                     手上的牌.add(card);
                 }
-
                 break;
             }
             case CardType.科技: {
@@ -549,16 +562,7 @@ public class Player {
                 break;
             }
             default:
-
         }
-
-//        if (card.get類型() == CardType.奇蹟) {
-//            cardsOnTable.add(card);
-//
-//        } else if (card.get類型() == CardType.領袖) {
-////            if()
-//        } else {手上的牌.add(card);
-//        }
         //拿牌扣點
         set內政點數(get內政點數() - cost);
 
