@@ -15,6 +15,7 @@ import com.livehereandnow.ages.components.Card;
 import com.livehereandnow.ages.components.CardType;
 import com.livehereandnow.ages.components.Cards;
 import com.livehereandnow.ages.components.Player;
+import com.livehereandnow.ages.exception.AgesException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -137,7 +138,7 @@ public class Engine {
         System.out.println("新的遊戲開始");
     }
 
-    public boolean doChangeTurn() {
+    public boolean doChangeTurn() throws AgesException {
 
         //  System.out.println("運行doChangeTurn");
         get當前玩家().執行生產();
@@ -146,10 +147,14 @@ public class Engine {
             當前玩家ID = 0;
             roundNum++;
 
-            玩家[0].set內政點數(4);
-            玩家[1].set內政點數(4);
-            玩家[2].set內政點數(4);
-            玩家[3].set內政點數(4);
+//            玩家[0].set內政點數(4);
+//            玩家[1].set內政點數(4);
+//            玩家[2].set內政點數(4);
+//            玩家[3].set內政點數(4);
+            玩家[0].getCivilCounter().setPoint(4);
+            玩家[1].getCivilCounter().setPoint(4);
+            玩家[2].getCivilCounter().setPoint(4);
+            玩家[3].getCivilCounter().setPoint(4);
 
         } else {
             當前玩家ID++;
@@ -160,11 +165,11 @@ public class Engine {
 
     }
 
-    public Engine() {
+    public Engine() throws AgesException {
         init();
     }
 
-    public void init() {
+    public void init() throws AgesException {
         玩家[0] = new Player();
         玩家[1] = new Player();
         玩家[2] = new Player();
@@ -180,10 +185,14 @@ public class Engine {
 
         roundNum = 1;
 
-        玩家[0].set內政點數(1);
-        玩家[1].set內政點數(2);
-        玩家[2].set內政點數(3);
-        玩家[3].set內政點數(4);
+//        玩家[0].set內政點數(1);
+//        玩家[1].set內政點數(2);
+//        玩家[2].set內政點數(3);
+//        玩家[3].set內政點數(4);
+        玩家[0].getCivilCounter().setPoint(1);
+        玩家[1].getCivilCounter().setPoint(2);
+        玩家[2].getCivilCounter().setPoint(3);
+        玩家[3].getCivilCounter().setPoint(4);
 
         Cards cards = new Cards();
         ageA內政牌 = cards.get時代A內政牌();
@@ -226,7 +235,7 @@ public class Engine {
      * @param k
      * @return true: perform take-card successfully
      */
-    public boolean doTakeCard(int k) {
+    public boolean doTakeCard(int k) throws AgesException {
         int cardNum = k;
         if (cardNum > 12 || cardNum < 0) { // card number must be 0 to 12 only 
 //                        System.out.println("card number must be 0 to 12 only *** Nothing happened ***");
@@ -252,9 +261,9 @@ public class Engine {
             cardRow.remove(k);//從卡牌列上移除該牌
             cardRow.add(k, NOCARD);//並在卡牌列同一個位置增加空牌
         } else {
-            System.out.println("拿牌沒有成功" + card.get卡名());
-            System.out.println("拿牌沒有成功的原因:"+get當前玩家().get失敗原因());
-            
+//            System.out.println("拿牌沒有成功" + card.get卡名());
+            System.out.println("   拿牌沒有成功的原因:" + get當前玩家().get失敗原因());
+
         }
 
         //    do拿牌扣點(cardPoint);
@@ -288,11 +297,17 @@ public class Engine {
 
         System.out.println();
 
-                System.out.println("  === ver 0.26 ===  2014-4-23, 12:44, by Max　");
+        System.out.println("  === ver 0.27 ===  2014-4-24, 8:33, by Mark　");
+        System.out.println("    1. introduce AgesException and new Counter class");
+        System.out.println("    2. done, not allow to take card when 內政點數不夠");
+        System.out.println("    3. add civilCounter");
+        System.out.println("    4. TODO add militaryCounter");
+
+        System.out.println("  === ver 0.26 ===  2014-4-23, 12:44, by Max　");
         System.out.println("    1. 實施拿牌沒有成功的原因");
         System.out.println("    2. done 拿牌沒有成功的原因:已經拿過0時代的領袖牌");
         System.out.println("    3. TODO 內政點數不夠，已經拿過該科技牌，尚有未完成的奇蹟");
-        
+
         System.out.println("  === ver 0.25 ===  2014-4-23, 12:06, by Max　");
         System.out.println("    1. 在Player裡面增加 應對拿牌不同的類型，做出不同的判斷方式(目前只做了領袖跟一半的奇蹟)");
         System.out.println("    2.  在Emgine做take-card如果遭遇回傳false 顯示該牌");
@@ -438,7 +453,7 @@ public class Engine {
      * @return
      * @throws IOException
      */
-    public boolean doCmd(String cmd) throws IOException {
+    public boolean doCmd(String cmd) throws IOException, AgesException {
         int tokenCnt = 0;//命令行裡共有幾個字，給予初值為0
         String keyword = "";//指令是什麼，給予初值空字符串
         int parameter = -1;//指令的參數是什麼，給予初值為-1，-1通常是指不能用的值

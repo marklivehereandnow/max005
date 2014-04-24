@@ -7,6 +7,7 @@
  */
 package com.livehereandnow.ages.components;
 
+import com.livehereandnow.ages.exception.AgesException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +17,16 @@ import java.util.List;
  */
 public class Player {
 
+    private Counter civilCounter;
+
+    public Counter getCivilCounter() {
+        return civilCounter;
+    }
+
     private String name;
 
     private String 失敗原因;
+
     public String getName() {
         return name;
     }
@@ -151,7 +159,7 @@ public class Player {
     private int 資源;
     private int 科技;
 //政府的影響
-    private int 內政點數;//該玩家即時的內政點數
+//    private int 內政點數;//該玩家即時的內政點數
     private int 軍事點數;
 //        System.out.println("    2, 在Player內設置當前領袖位置.戰術牌位置.待建奇蹟位置.建好的奇蹟.值民地位置,預計花0.5個小時完成,4/20日完成");
 
@@ -340,13 +348,13 @@ public class Player {
     private int 黃點工人供應區;
     private int 藍點資源供應區;
 
-    public int get內政點數() {
-        return 內政點數;
-    }
-
-    public void set內政點數(int 內政點數) {
-        this.內政點數 = 內政點數;
-    }
+//    public int get內政點數() {
+//        return 內政點數;
+//    }
+//
+//    public void set內政點數(int 內政點數) {
+//        this.內政點數 = 內政點數;
+//    }
 
     public int get軍事點數() {
         return 軍事點數;
@@ -393,8 +401,8 @@ public class Player {
 
     //起始設定
     public Player() {
-
-        失敗原因 ="";
+        civilCounter = new Counter();
+        失敗原因 = "";
         點數 = new Score();
         for (int k = 0; k < 4; k++) {
             已拿取時代領袖[k] = false;
@@ -518,7 +526,6 @@ public class Player {
 
     }
 
-    
     /**
      * 玩家拿牌，基本規則可查詢，http://www.livehereandnow.com/?page_id=2259 1.1.1.2.1
      * 拿過領袖的記錄，在Player 設定一個boolean 領袖牌[k] k為時代 1.1.1.3.1
@@ -529,11 +536,17 @@ public class Player {
      * @param card
      * @return true:表示拿牌成功
      */
-    public boolean doTakeCard(int cost, Card card) {
+    public boolean doTakeCard(int cost, Card card) throws AgesException {
         //TODO check any not allowed...
 
         this.set失敗原因("無失敗紀錄");
-                switch (card.get類型()) {
+
+        if (!civilCounter.isEnoughToPay(cost)) {
+            this.set失敗原因("NOT ENOUGH CIVIL POINTS TO PAY THIS CARD," + card.卡名);
+            return false;
+        }
+
+        switch (card.get類型()) {
             case CardType.奇蹟: {
                 cardsOnTable.add(card);
                 break;
@@ -541,7 +554,7 @@ public class Player {
             case CardType.領袖: {//當拿取領袖牌的時候，
 
                 if (this.is已拿取時代領袖(card.時代)) {//先檢測是否拿過該時代的領袖牌
-                    
+
                     this.set失敗原因("已經拿過" + card.時代 + "時代的領袖牌");
 //                    System.out.println("已經拿過" + card.時代 + "時代的領袖牌");//          如果拿過，則提示已經拿過， 
                     return false;//並否決玩家的行動，以return false告知調用的程序，這次拿牌沒有成功
@@ -564,13 +577,16 @@ public class Player {
             default:
         }
         //拿牌扣點
-        set內政點數(get內政點數() - cost);
+//        set內政點數(get內政點數() - cost);
 
+        getCivilCounter().payPoint(cost);
         return true;
     }
 
     public void showStatus() {
-        System.out.print("\n   內政點數=" + get內政點數());
+//        System.out.print("\n   內政點數=" + get內政點數());
+        System.out.print("\n   內政點數=" + getCivilCounter().getPoint());
+        
         showCards();
         System.out.println("\n   " + get點數());
         show農場礦山實驗室神廟步兵();
